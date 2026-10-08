@@ -108,7 +108,7 @@ svg.i{width:24px;height:24px;fill:none;stroke:currentColor;stroke-width:1.9;stro
 .ptitle{display:block;width:100%;border:0;background:transparent;outline:0;font-size:24px;font-weight:800;padding:8px 6px 12px;color:var(--ink)}
 .ptitle::placeholder{color:var(--muted);opacity:.7}
 .paper{--lh:36px;position:relative;background-color:var(--paper);color:var(--paper-ink);border-radius:18px;box-shadow:var(--shadow-s);overflow:hidden}
-.paper.bg-lined{background-image:repeating-linear-gradient(transparent 0 calc(var(--lh) - 1px),var(--paper-rule) calc(var(--lh) - 1px) var(--lh));background-position:0 26px}
+.paper.bg-lined{background-image:repeating-linear-gradient(transparent 0 calc(var(--lh) - 1px),var(--paper-rule) calc(var(--lh) - 1px) var(--lh));background-position:0 calc(23px + var(--fs,17px)*1.58 - var(--lh))}
 .paper.bg-grid{background-image:linear-gradient(var(--paper-rule) 1px,transparent 1px),linear-gradient(90deg,var(--paper-rule) 1px,transparent 1px);background-size:24px 24px}
 #ed{position:relative;z-index:1;height:100%;overflow:hidden;padding:22px 20px 22px;font-size:var(--fs,19px);line-height:var(--lh);outline:0;caret-color:var(--paper-ink);overflow-wrap:anywhere;-webkit-user-select:text;user-select:text}
 #ed p,#ed div,#ed li,.tbody p,.tbody div,.tbody li{margin:0;text-align:start}
@@ -257,6 +257,14 @@ div.cover{cursor:pointer;-webkit-tap-highlight-color:transparent}
 /* images */
 #ed img.pimg,.tbody img.pimg,.pbody img.pimg{display:block;margin:6px 0;border-radius:6px;max-width:none}
 #ed img.pimg{cursor:pointer}
+#isel{position:absolute;z-index:3;border:2px solid #FFB000;border-radius:3px;box-shadow:0 0 0 1px rgba(22,27,51,.35);pointer-events:none}
+#isel .hd{position:absolute;pointer-events:auto;touch-action:none;width:34px;height:34px;border-radius:50%;background:#FFD84D;border:3px solid #161B33;box-shadow:0 2px 6px rgba(0,0,0,.3)}
+#isel .hw{top:50%;margin-top:-17px;inset-inline-end:-19px}
+#isel .hh{bottom:-19px;left:50%;margin-left:-17px}
+#isel .hc{bottom:-19px;inset-inline-end:-19px;border-radius:9px}
+#isel .itrash{position:absolute;pointer-events:auto;top:8px;inset-inline-start:8px;width:38px;height:38px;border-radius:12px;background:rgba(22,27,51,.82);color:#fff;display:grid;place-items:center}
+#isel .itrash.warn{background:var(--warn)}
+#isel .itrash svg{width:20px;height:20px}
 /* print */
 #printRoot{display:none}
 @page{size:A4;margin:0}
@@ -264,19 +272,22 @@ div.cover{cursor:pointer;-webkit-tap-highlight-color:transparent}
   html,body{height:auto!important;overflow:visible!important;background:#fff!important;margin:0!important}
   .app{display:none!important}
   #printRoot{display:block!important;color:#161B33;font-family:var(--font);-webkit-print-color-adjust:exact;print-color-adjust:exact}
-  .pp{position:relative;width:210mm;height:297mm;overflow:hidden;break-after:page;page-break-after:always;background:#fff}
+  :root:root:root{color-scheme:light}
+  #printRoot{--u:min(calc(96vw/440),calc(96vh/622));background:#fff}
+  .pp{position:relative;width:calc(440*var(--u));height:calc(622*var(--u));margin:0 auto;overflow:hidden;break-after:page;page-break-after:always;background:#fff}
   .pp:last-child{break-after:auto;page-break-after:auto}
-  .ppi{position:absolute;left:0;top:0;width:440px;height:622px;transform-origin:0 0;transform:scale(1.8039);overflow:hidden;--paper:#fff;--paper-rule:#D8DCEB;background-color:#fff;color:#161B33}
-  .ppi.bg-lined{background-image:repeating-linear-gradient(transparent 0 calc(var(--lh) - 1px),var(--paper-rule) calc(var(--lh) - 1px) var(--lh));background-position:0 26px}
-  .ppi.bg-grid{background-image:linear-gradient(var(--paper-rule) 1px,transparent 1px),linear-gradient(90deg,var(--paper-rule) 1px,transparent 1px);background-size:24px 24px}
-  .ppt{position:absolute;left:20px;right:20px;top:5px;font-size:10px;font-weight:800;color:#6A7090;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-  .pbody{position:relative;height:100%;padding:22px 20px;font-size:var(--fs);line-height:var(--lh);overflow:hidden;overflow-wrap:anywhere}
+  .ppi{position:absolute;left:0;top:0;width:100%;height:100%;overflow:hidden;background:#fff;color:#161B33}
+  .rl{position:absolute;left:0;right:0;height:max(1px,calc(.7*var(--u)));background:#D3D8E8}
+  .rv{position:absolute;top:0;bottom:0;width:max(1px,calc(.7*var(--u)));background:#D3D8E8}
+  .ppt{position:absolute;left:calc(20*var(--u));right:calc(20*var(--u));top:calc(7*var(--u));font-size:calc(6.2*var(--u));font-weight:700;color:#8A90AB;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .pbody{position:relative;height:100%;padding:calc(22*var(--u)) calc(20*var(--u));font-size:calc(var(--fsn)*var(--u));line-height:calc(var(--lhn)*var(--u));overflow:hidden;overflow-wrap:anywhere}
   .pbody p,.pbody div,.pbody li{margin:0;text-align:start}
-  .pbody h2{margin:0;font-size:calc(var(--fs)*1.32);line-height:var(--lh);font-weight:800}
-  .pbody ul{margin:0;padding-inline-start:28px}
-  #printRoot.nolines .ppi{background-image:none!important}
+  .pbody h2{margin:0;font-size:calc(var(--fsn)*1.32*var(--u));line-height:calc(var(--lhn)*var(--u));font-weight:800}
+  .pbody ul{margin:0;padding-inline-start:calc(28*var(--u))}
+  .pbody img.pimg{margin:calc(6*var(--u)) 0;border-radius:calc(6*var(--u))}
+  #printRoot.nolines .rl,#printRoot.nolines .rv{display:none}
   #printRoot.nohead .ppt{display:none}
-  .pdraw{position:absolute;left:0;top:0;width:440px;height:622px;mix-blend-mode:multiply}
+  .pdraw{position:absolute;left:0;top:0;width:100%;height:100%}
 }
 @media (prefers-reduced-motion:reduce){.panel,.cover{animation:none;transition:none}#ed .flash{animation:none}}
 </style>
@@ -284,12 +295,12 @@ div.cover{cursor:pointer;-webkit-tap-highlight-color:transparent}
 <div class="app" id="app" dir="rtl">
   <section class="screen" id="home">
     <header class="bar">
+      <div class="brand"><b id="brand"></b></div>
       <div class="sp"></div>
       <button class="ib fill" id="accBtn" aria-label="account"></button><button class="pill" id="langBtn"></button>
     </header>
     <div class="scroll">
       <div class="hwrap">
-        <h1 id="hTitle"></h1>
         <p id="hSub"></p>
         <button class="fake" id="hSearch"><svg class="i" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><span id="hSearchT"></span></button>
         <div class="shelf" id="shelf"></div>
@@ -364,7 +375,7 @@ var P={
 function svg(n){return '<svg class="i" viewBox="0 0 24 24">'+P[n]+'</svg>';}
 
 var T={
-  ar:{sNb:'ابحث عن دفتر…',sNbT:'البحث عن دفتر',pgQ:'ابحث في الصفحات (رقم أو كلمة)…',newPg:'صفحة جديدة',mOpen:'فتح الدفتر',mPrint:'طباعة / PDF',mSet:'إعدادات الدفتر',prvT:'معاينة الطباعة',prvAll:'تحديد الكل',prvNone:'إلغاء التحديد',prvR:'اختر صفحات: 1-3, 5',prvPrint:function(n){return 'طباعة ('+n+')';},prvCnt:function(n,t){return n+' من '+t+' صفحة محددة';},prvLines:'الأسطر والمربعات',prvHead:'اسم الدفتر في الأعلى',prvNo:'اختر صفحة واحدة على الأقل',tImg:'صورة',imgT:'إضافة صورة',imgCam:'التقاط صورة',imgGal:'اختيار من المعرض',imgSz:'حجم الصورة',imgDel:'حذف الصورة',imgBig:'هذه الصفحة ممتلئة بالصور، احذف صورة أو أضف صفحة جديدة',imgErr:'تعذّر فتح الصورة',noSpace:'مساحة التخزين ممتلئة — احذف بعض الصور',imgNote:'تُضغط الصورة تلقائياً لتبقى الدفاتر خفيفة.',pgFull:'امتلأت الصفحة — فُتحت صفحة جديدة',nbLangL:'لغة هذا الدفتر',nlAr:'العربية',nlFr:'Français',pdfP:'طباعة هذه الصفحة',pdfA:'طباعة كل الدفتر',cvCustom:'لون آخر للغلاف',acTitle:'حسابي',acIntro:'سجّل الدخول بالبريد الإلكتروني لتجد دفاترك على كل أجهزتك.',acEmail:'البريد الإلكتروني',acPass:'كلمة المرور',acIn:'تسجيل الدخول',acUp:'إنشاء حساب جديد',acForgot:'نسيت كلمة المرور؟',acOut:'تسجيل الخروج',acHow:'تُحفظ دفاترك على هذا الجهاز وتتزامن تلقائياً عند توفر الإنترنت، ويمكنك الكتابة بدونه.',syOk:'متزامن',syBusy:'جارٍ المزامنة…',syOff:'بدون إنترنت — سيتم الحفظ لاحقاً',acBad:'البريد أو كلمة المرور غير صحيحة',acExists:'هذا البريد مسجّل من قبل، سجّل الدخول',acWeak:'كلمة المرور ضعيفة (6 أحرف على الأقل)',acMail:'اكتب بريداً إلكترونياً صحيحاً',acNet:'لا يوجد اتصال بالإنترنت',acMany:'محاولات كثيرة، انتظر قليلاً',acConf:'الحساب بالبريد غير مفعّل في Firebase',acNoPw:'اكتب كلمة المرور',acSent:'أرسلنا رابط إعادة التعيين إلى بريدك',acWelcome:'مرحباً! تتم المزامنة الآن',acBye:'تم تسجيل الخروج',acGone:'تم حذف هذا الدفتر من جهاز آخر',acBig:'صفحة كبيرة جداً لا يمكن مزامنتها',acNone:'المزامنة غير مفعّلة بعد: أضف إعدادات Firebase في أعلى الملف index.html',acArt:'الحساب والمزامنة يعملان من الموقع المنشور وليس من هذه المعاينة',tools:'الأدوات',hideT:'إخفاء الأدوات',app:'دفاتري',myNbs:'دفاتري',sub:'اختر دفتراً وابدأ كتابة دروسك',search:'ابحث بكلمة في كل الدفاتر…',newNb:'دفتر جديد',
+  ar:{sNb:'ابحث عن دفتر…',sNbT:'البحث عن دفتر',pgQ:'ابحث في الصفحات (رقم أو كلمة)…',newPg:'صفحة جديدة',mOpen:'فتح الدفتر',mPrint:'طباعة / PDF',mSet:'إعدادات الدفتر',prvT:'معاينة الطباعة',prvAll:'تحديد الكل',prvNone:'إلغاء التحديد',prvR:'اكتب أرقام الصفحات: 1-3 5 8',prvPrint:function(n){return 'طباعة ('+n+')';},prvCnt:function(n,t){return n+' من '+t+' صفحة محددة';},prvLines:'الأسطر والمربعات',prvHead:'اسم الدفتر في الأعلى',prvNo:'اختر صفحة واحدة على الأقل',tImg:'صورة',imgT:'إضافة صورة',imgCam:'التقاط صورة',imgGal:'اختيار من المعرض',imgSz:'حجم الصورة',imgDel:'حذف الصورة',imgBig:'هذه الصفحة ممتلئة بالصور، احذف صورة أو أضف صفحة جديدة',imgErr:'تعذّر فتح الصورة',noSpace:'مساحة التخزين ممتلئة — احذف بعض الصور',imgNote:'تُضغط الصورة تلقائياً لتبقى الدفاتر خفيفة.',pgFull:'امتلأت الصفحة — فُتحت صفحة جديدة',nbLangL:'لغة هذا الدفتر',nlAr:'العربية',nlFr:'Français',pdfP:'طباعة هذه الصفحة',pdfA:'طباعة كل الدفتر',cvCustom:'لون آخر للغلاف',acTitle:'حسابي',acIntro:'سجّل الدخول بالبريد الإلكتروني لتجد دفاترك على كل أجهزتك.',acEmail:'البريد الإلكتروني',acPass:'كلمة المرور',acIn:'تسجيل الدخول',acUp:'إنشاء حساب جديد',acForgot:'نسيت كلمة المرور؟',acOut:'تسجيل الخروج',acHow:'تُحفظ دفاترك على هذا الجهاز وتتزامن تلقائياً عند توفر الإنترنت، ويمكنك الكتابة بدونه.',syOk:'متزامن',syBusy:'جارٍ المزامنة…',syOff:'بدون إنترنت — سيتم الحفظ لاحقاً',acBad:'البريد أو كلمة المرور غير صحيحة',acExists:'هذا البريد مسجّل من قبل، سجّل الدخول',acWeak:'كلمة المرور ضعيفة (6 أحرف على الأقل)',acMail:'اكتب بريداً إلكترونياً صحيحاً',acNet:'لا يوجد اتصال بالإنترنت',acMany:'محاولات كثيرة، انتظر قليلاً',acConf:'الحساب بالبريد غير مفعّل في Firebase',acNoPw:'اكتب كلمة المرور',acSent:'أرسلنا رابط إعادة التعيين إلى بريدك',acWelcome:'مرحباً! تتم المزامنة الآن',acBye:'تم تسجيل الخروج',acGone:'تم حذف هذا الدفتر من جهاز آخر',acBig:'صفحة كبيرة جداً لا يمكن مزامنتها',acNone:'المزامنة غير مفعّلة بعد: أضف إعدادات Firebase في أعلى الملف index.html',acArt:'الحساب والمزامنة يعملان من الموقع المنشور وليس من هذه المعاينة',tools:'الأدوات',hideT:'إخفاء الأدوات',app:'دفاتري',myNbs:'دفاتري',sub:'اختر دفتراً وابدأ كتابة دروسك',search:'ابحث بكلمة في كل الدفاتر…',newNb:'دفتر جديد',
     pagesN:function(n){return n===1?'صفحة واحدة':n===2?'صفحتان':n<=10?n+' صفحات':n+' صفحة';},nbDef:function(n){return 'دفتر '+n;},untitled:'بدون عنوان',pTitle:'عنوان الدرس',ph:'اضغط هنا وابدأ الكتابة…',
     tWrite:'كتابة',tHl:'تظليل',tColor:'لون الخط',tDraw:'رسم',tScan:'مسح ضوئي',scTitle:'مسح ورقة إلى نص',scLang:'لغة الورقة',lAr:'عربي',lFr:'Français',lBoth:'الاثنان',scShot:'التقاط صورة للورقة',scGal:'اختيار صورة من المعرض',scNote:'صوّر الورقة بوضوح وفي ضوء جيد وبدون ظلال. أول مرة يحتاج إنترنت لتحميل ملفات اللغة.',scBusy1:'تحميل ملفات اللغة…',scBusy2:'قراءة النص…',scDone:'راجع النص وصحّحه ثم أضفه إلى الصفحة',scAdd:'أضف النص إلى الصفحة',scErr:'تعذّر المسح. تأكد من الإنترنت وحاول مرة أخرى.',scEmpty:'لم أجد نصاً في الصورة. جرّب صورة أوضح.',scArt:'المسح الضوئي يعمل من الموقع المنشور أو من الملف، وليس من هذه المعاينة',
     hWrite:'اضغط على الورقة واكتب. حدّد نصاً لتنسيقه.',fs:'حجم الخط',more:'كل الألوان',allC:'كل الألوان',custom:'لون مخصص',pagesT:'كل الصفحات',sInNb:'ابحث في هذا الدفتر…',bold:'عريض',under:'تسطير',title:'عنوان',list:'قائمة',normal:'عادي',
@@ -373,7 +384,7 @@ var T={
     set:'إعدادات الدفتر',nbName:'اسم الدفتر',cover:'لون الغلاف',paper:'شكل الورقة',lined:'مسطّر',grid:'مربعات',plain:'أبيض',
     pdf:'تصدير PDF للطباعة',fsL:'حجم الخط في هذا الدفتر',delPage:'حذف هذه الصفحة',delNb:'حذف الدفتر كله',noRes:'لا توجد نتائج',
     pdfNote:'الطباعة بصيغة PDF تعمل من نسخة الملف في المتصفح'},
-  fr:{sNb:'Chercher un cahier…',sNbT:'Chercher un cahier',pgQ:'Chercher une page (numéro ou mot)…',newPg:'Nouvelle page',mOpen:'Ouvrir le cahier',mPrint:'Imprimer / PDF',mSet:'Réglages du cahier',prvT:'Aperçu avant impression',prvAll:'Tout sélectionner',prvNone:'Tout désélectionner',prvR:'Choisir les pages : 1-3, 5',prvPrint:function(n){return 'Imprimer ('+n+')';},prvCnt:function(n,t){return n+' sur '+t+' page'+(t>1?'s':'')+' sélectionnée'+(n>1?'s':'');},prvLines:'Lignes et carreaux',prvHead:'Nom du cahier en haut',prvNo:'Choisissez au moins une page',tImg:'Image',imgT:'Ajouter une image',imgCam:'Prendre une photo',imgGal:'Choisir dans la galerie',imgSz:"Taille de l'image",imgDel:"Supprimer l'image",imgBig:'Cette page est pleine d\'images : supprimez-en une ou ajoutez une page',imgErr:"Image illisible",noSpace:'Stockage plein — supprimez des images',imgNote:'Les images sont compressées automatiquement pour garder des cahiers légers.',pgFull:'Page pleine : une nouvelle page a été ajoutée',nbLangL:'Langue de ce cahier',nlAr:'العربية',nlFr:'Français',pdfP:'Imprimer cette page',pdfA:'Imprimer tout le cahier',cvCustom:'Autre couleur de couverture',acTitle:'Mon compte',acIntro:'Connectez-vous avec votre e-mail pour retrouver vos cahiers sur tous vos appareils.',acEmail:'E-mail',acPass:'Mot de passe',acIn:'Se connecter',acUp:'Créer un compte',acForgot:'Mot de passe oublié ?',acOut:'Se déconnecter',acHow:'Vos cahiers sont enregistrés sur cet appareil et synchronisés automatiquement dès qu’il y a Internet. Vous pouvez écrire sans connexion.',syOk:'Synchronisé',syBusy:'Synchronisation…',syOff:'Hors ligne — envoi plus tard',acBad:'E-mail ou mot de passe incorrect',acExists:'Cet e-mail a déjà un compte, connectez-vous',acWeak:'Mot de passe trop faible (6 caractères minimum)',acMail:'Saisissez un e-mail valide',acNet:'Pas de connexion Internet',acMany:'Trop d’essais, patientez un peu',acConf:'La connexion par e-mail n’est pas activée dans Firebase',acNoPw:'Saisissez le mot de passe',acSent:'Lien de réinitialisation envoyé à votre e-mail',acWelcome:'Bienvenue ! Synchronisation en cours',acBye:'Déconnecté',acGone:'Ce cahier a été supprimé depuis un autre appareil',acBig:'Page trop volumineuse pour être synchronisée',acNone:'La synchronisation n’est pas encore activée : ajoutez la configuration Firebase en haut de index.html',acArt:'Le compte et la synchronisation fonctionnent depuis le site publié, pas depuis cet aperçu',tools:'Outils',hideT:'Masquer les outils',app:'Mes Cahiers',myNbs:'Mes cahiers',sub:'Choisissez un cahier et écrivez vos leçons',search:'Chercher un mot dans tous les cahiers…',newNb:'Nouveau cahier',
+  fr:{sNb:'Chercher un cahier…',sNbT:'Chercher un cahier',pgQ:'Chercher une page (numéro ou mot)…',newPg:'Nouvelle page',mOpen:'Ouvrir le cahier',mPrint:'Imprimer / PDF',mSet:'Réglages du cahier',prvT:'Aperçu avant impression',prvAll:'Tout sélectionner',prvNone:'Tout désélectionner',prvR:'Numéros de pages : 1-3 5 8',prvPrint:function(n){return 'Imprimer ('+n+')';},prvCnt:function(n,t){return n+' sur '+t+' page'+(t>1?'s':'')+' sélectionnée'+(n>1?'s':'');},prvLines:'Lignes et carreaux',prvHead:'Nom du cahier en haut',prvNo:'Choisissez au moins une page',tImg:'Image',imgT:'Ajouter une image',imgCam:'Prendre une photo',imgGal:'Choisir dans la galerie',imgSz:"Taille de l'image",imgDel:"Supprimer l'image",imgBig:'Cette page est pleine d\'images : supprimez-en une ou ajoutez une page',imgErr:"Image illisible",noSpace:'Stockage plein — supprimez des images',imgNote:'Les images sont compressées automatiquement pour garder des cahiers légers.',pgFull:'Page pleine : une nouvelle page a été ajoutée',nbLangL:'Langue de ce cahier',nlAr:'العربية',nlFr:'Français',pdfP:'Imprimer cette page',pdfA:'Imprimer tout le cahier',cvCustom:'Autre couleur de couverture',acTitle:'Mon compte',acIntro:'Connectez-vous avec votre e-mail pour retrouver vos cahiers sur tous vos appareils.',acEmail:'E-mail',acPass:'Mot de passe',acIn:'Se connecter',acUp:'Créer un compte',acForgot:'Mot de passe oublié ?',acOut:'Se déconnecter',acHow:'Vos cahiers sont enregistrés sur cet appareil et synchronisés automatiquement dès qu’il y a Internet. Vous pouvez écrire sans connexion.',syOk:'Synchronisé',syBusy:'Synchronisation…',syOff:'Hors ligne — envoi plus tard',acBad:'E-mail ou mot de passe incorrect',acExists:'Cet e-mail a déjà un compte, connectez-vous',acWeak:'Mot de passe trop faible (6 caractères minimum)',acMail:'Saisissez un e-mail valide',acNet:'Pas de connexion Internet',acMany:'Trop d’essais, patientez un peu',acConf:'La connexion par e-mail n’est pas activée dans Firebase',acNoPw:'Saisissez le mot de passe',acSent:'Lien de réinitialisation envoyé à votre e-mail',acWelcome:'Bienvenue ! Synchronisation en cours',acBye:'Déconnecté',acGone:'Ce cahier a été supprimé depuis un autre appareil',acBig:'Page trop volumineuse pour être synchronisée',acNone:'La synchronisation n’est pas encore activée : ajoutez la configuration Firebase en haut de index.html',acArt:'Le compte et la synchronisation fonctionnent depuis le site publié, pas depuis cet aperçu',tools:'Outils',hideT:'Masquer les outils',app:'Mes Cahiers',myNbs:'Mes cahiers',sub:'Choisissez un cahier et écrivez vos leçons',search:'Chercher un mot dans tous les cahiers…',newNb:'Nouveau cahier',
     pagesN:function(n){return n+' page'+(n>1?'s':'');},nbDef:function(n){return 'Cahier '+n;},untitled:'Sans titre',pTitle:'Titre de la leçon',ph:'Touchez ici et commencez à écrire…',
     tWrite:'Écrire',tHl:'Surligner',tColor:'Couleur',tDraw:'Dessin',tScan:'Scanner',scTitle:'Scanner une feuille en texte',scLang:'Langue de la feuille',lAr:'Arabe',lFr:'Français',lBoth:'Les deux',scShot:'Photographier la feuille',scGal:'Choisir une photo de la galerie',scNote:'Photographiez la feuille bien nette, avec une bonne lumière, sans ombre. La première fois, internet est nécessaire pour télécharger les langues.',scBusy1:'Téléchargement des langues…',scBusy2:'Lecture du texte…',scDone:'Relisez et corrigez le texte, puis ajoutez-le à la page',scAdd:'Ajouter le texte à la page',scErr:"Échec du scan. Vérifiez internet et réessayez.",scEmpty:"Aucun texte trouvé. Essayez une photo plus nette.",scArt:"Le scanner fonctionne depuis le site publié ou le fichier, pas depuis cet aperçu",
     hWrite:'Touchez la feuille et écrivez. Sélectionnez un texte pour le mettre en forme.',fs:'Taille du texte',more:'Toutes',allC:'Toutes les couleurs',custom:'Couleur personnalisée',pagesT:'Toutes les pages',sInNb:'Chercher dans ce cahier…',bold:'Gras',under:'Souligné',title:'Titre',list:'Liste',normal:'Normal',
@@ -418,7 +429,7 @@ function toast(msg){toastEl.textContent=msg;toastEl.hidden=false;clearTimeout(to
 /* ---------- home ---------- */
 function renderHome(){
   var l=L(),h='';
-  $('hTitle').textContent=l.myNbs;$('hSub').textContent=l.sub;$('hSearchT').textContent=l.sNb;
+  $('brand').textContent=l.app;$('hSub').textContent=l.sub;$('hSearchT').textContent=l.sNb;
   $('langBtn').textContent=db.lang==='ar'?'FR':'عربي';
   db.nbs.forEach(function(n){
     h+='<div class="cover" role="button" tabindex="0" data-nb="'+n.id+'" style="--c:'+n.color+'"><button class="cmore" data-menu="'+n.id+'" aria-label="menu">'+svg('dots')+'</button><span class="cm">'+l.pagesN(n.pages.length)+'</span><span class="label">'+esc(nm(n.name)||l.untitled)+'</span><span class="rl"></span></div>';
@@ -470,6 +481,7 @@ function applyNbLang(){
   ed.setAttribute('data-ph',l.ph);pTitle.placeholder=l.pTitle;
 }
 function loadPage(keepScroll){
+  if(typeof selHide==='function')selHide();
   var p=curPg();
   pgId=p.id;
   ed.innerHTML=p.html||'';
@@ -634,6 +646,7 @@ ed.addEventListener('paste',function(e){
   var t=(e.clipboardData||window.clipboardData).getData('text/plain');
   document.execCommand('insertText',false,t);
 });
+pTitle.addEventListener('focus',function(){if(typeof selHide==='function')selHide();});
 pTitle.addEventListener('input',function(){var p=curPg();if(p){p.title=pTitle.value;save();}});
 document.addEventListener('selectionchange',function(){
   var s=window.getSelection();
@@ -812,7 +825,7 @@ function renderDock(){
   scrollEl.style.paddingBottom=(dock.offsetHeight+34)+'px';
 }
 function setMode(m){
-  mode=m;armed=null;
+  mode=m;armed=null;if(m==='draw'&&typeof selHide==='function')selHide();
   if(m==='draw'){ed.contentEditable='false';if(document.activeElement===ed)ed.blur();}
   else ed.contentEditable='true';
   updatePointer();renderDock();
@@ -1254,20 +1267,32 @@ function strokesURL(p){
   p.strokes.forEach(function(s){drawStroke(x,s);});
   return c.toDataURL('image/png');
 }
+function printRules(bg,fs,lh){
+  var h='',y,x;
+  if(bg==='lined'){var off=Math.round(1.58*fs);for(y=22+off;y<PH;y+=lh)h+='<i class="rl" style="top:calc('+y+'*var(--u))"></i>';}
+  else if(bg==='grid'){for(x=24;x<PW;x+=24)h+='<i class="rv" style="left:calc('+x+'*var(--u))"></i>';for(y=24;y<PH;y+=24)h+='<i class="rl" style="top:calc('+y+'*var(--u))"></i>';}
+  return h;
+}
+function printHtml(html){
+  return String(html||'').replace(/<img([^>]*?)\swidth="(\d+)"([^>]*?)\sheight="(\d+)"/g,function(m,a,w,b,hh){return '<img'+a+b+' style="width:calc('+w+'*var(--u));height:calc('+hh+'*var(--u))"';});
+}
+var themeWas=null;
 function exportPdf(list,n,o){
   if(window.claude){toast(L().pdfNote);return;}
   var h='',d=nbDir(n),fs=fsOf(n),lh=Math.round(fs*1.9);
   list.forEach(function(p){
-    var i=n.pages.indexOf(p),has=p.strokes&&p.strokes.length;
+    var i=n.pages.indexOf(p),has=p.strokes&&p.strokes.length,bg=p.bg||'lined';
     var cap=esc(nm(n.name))+(nm(p.title)?' · '+esc(nm(p.title)):'')+' · '+(i+1)+' / '+n.pages.length;
-    h+='<section class="pp"><div class="ppi bg-'+(p.bg||'lined')+'" dir="'+d+'" style="--fs:'+fs+'px;--lh:'+lh+'px"><div class="ppt">'+cap+'</div><div class="pbody">'+(p.html||'')+'</div>'+(has?'<img class="pdraw" alt="" src="'+strokesURL(p)+'">':'')+'</div></section>';
+    h+='<section class="pp"><div class="ppi" dir="'+d+'" style="--fsn:'+fs+';--lhn:'+lh+'">'+printRules(bg,fs,lh)+'<div class="ppt">'+cap+'</div><div class="pbody">'+printHtml(p.html)+'</div>'+(has?'<img class="pdraw" alt="" src="'+strokesURL(p)+'">':'')+'</div></section>';
   });
-  var pr=$('printRoot');pr.className=(o.lines?'':'nolines ')+(o.head?'':'nohead');pr.innerHTML=h;
-  var imgs=[].slice.call(pr.querySelectorAll('img')),go=function(){window.print();};
-  Promise.race([Promise.all(imgs.map(function(im){return im.decode?im.decode().catch(function(){}):0;})),new Promise(function(r){setTimeout(r,2500);})]).then(function(){setTimeout(go,100);});
+  var pr=$('printRoot'),de=document.documentElement;
+  if(themeWas===null){themeWas=de.getAttribute('data-theme')||'';}
+  de.setAttribute('data-theme','light');
+  pr.className=(o.lines?'':'nolines ')+(o.head?'':'nohead');pr.innerHTML=h;
+  window.print();
 }
 var PV={n:null,sel:{},lines:true,head:true};
-function hidePreview(){var p=$('prv');if(p){p.hidden=true;p.innerHTML='';}PV.n=null;}
+function hidePreview(){var p=$('prv');if(p){p.hidden=true;p.innerHTML='';}PV.n=null;var pr=$('printRoot');if(pr)pr.innerHTML='';if(themeWas!==null){var de=document.documentElement;if(themeWas)de.setAttribute('data-theme',themeWas);else de.removeAttribute('data-theme');themeWas=null;}}
 function pvCount(){var c=0;PV.n.pages.forEach(function(p){if(PV.sel[p.id])c++;});return c;}
 function pvUpdate(){
   var l=L(),n=PV.n,c=pvCount(),g=$('pvGrid');if(!g)return;
@@ -1283,7 +1308,7 @@ function openPreview(n,which){
   var fs=fsOf(n),lh=Math.round(fs*1.9),d=nbDir(n);
   var prv=$('prv');
   prv.innerHTML='<header class="bar"><button class="ib fill" data-p="back" aria-label="close">'+svg('x')+'</button><div class="ttl">'+l.prvT+'</div><button class="pill pri" id="pvGo" data-p="go"></button></header>'
-   +'<div class="pvtools"><div class="pvrow"><button class="pill" data-p="all">'+l.prvAll+'</button><button class="pill" data-p="none">'+l.prvNone+'</button></div><div class="pvrow"><input id="pvR" class="inp" type="text" inputmode="numeric" autocomplete="off" placeholder="'+esc(l.prvR)+'"></div>'
+   +'<div class="pvtools"><div class="pvrow"><button class="pill" data-p="all">'+l.prvAll+'</button><button class="pill" data-p="none">'+l.prvNone+'</button></div><div class="pvrow"><input id="pvR" class="inp" type="text" autocomplete="off" autocapitalize="off" placeholder="'+esc(l.prvR)+'"></div>'
    +'<div class="pvrow"><label class="tg"><input type="checkbox" id="pvL" checked>'+l.prvLines+'</label><label class="tg"><input type="checkbox" id="pvH" checked>'+l.prvHead+'</label></div></div>'
    +'<div class="scroll"><div class="tgrid pvgrid" id="pvGrid">'+n.pages.map(function(p,i){
       var has=p.strokes&&p.strokes.length;
@@ -1363,32 +1388,54 @@ function insertImg(url,w,h){
   onEdit();
 }
 function curImg(){return ed.querySelectorAll('img.pimg')[imgIdx]||null;}
+var isBox=null,isArm=false;
+function selBox(){
+  if(isBox)return isBox;
+  var b=document.createElement('div');b.id='isel';b.hidden=true;
+  b.innerHTML='<i class="hd hw" data-h="w"></i><i class="hd hh" data-h="h"></i><i class="hd hc" data-h="c"></i><button class="itrash" data-ia="del" aria-label="delete">'+svg('trash')+'</button>';
+  paper.appendChild(b);isBox=b;return b;
+}
+function selPos(){
+  var im=curImg(),b=selBox();
+  if(!im){b.hidden=true;return;}
+  b.style.left=im.offsetLeft+'px';b.style.top=im.offsetTop+'px';b.style.width=im.offsetWidth+'px';b.style.height=im.offsetHeight+'px';b.hidden=false;
+}
+function selHide(){imgIdx=-1;isArm=false;if(isBox){isBox.hidden=true;var t=isBox.querySelector('.itrash');if(t)t.classList.remove('warn');}}
 ed.addEventListener('click',function(e){
   var im=e.target.closest&&e.target.closest('img.pimg');
-  if(!im||mode==='draw')return;
+  if(!im||mode==='draw'){selHide();return;}
   var all=ed.querySelectorAll('img.pimg');imgIdx=[].indexOf.call(all,im);
-  var l=L(),cur=+im.getAttribute('data-pct')||70;
-  openSheet('<div class="ph"><b>'+l.imgSz+'</b><button class="ib fill" data-close aria-label="close">'+svg('x')+'</button></div>'
-   +'<div class="seg" style="grid-template-columns:repeat(4,1fr)">'+[25,50,75,100].map(function(v){return '<button data-isz="'+v+'" class="'+(v===cur?'on':'')+'">'+v+'%</button>';}).join('')+'</div>'
-   +'<button class="wide" data-idel="1">'+svg('trash')+'<span>'+l.imgDel+'</span></button>');
+  isArm=false;selPos();if(document.activeElement===ed)ed.blur();
 });
-sheet.addEventListener('click',function(e){
-  var b=e.target.closest('[data-isz],[data-idel]');if(!b)return;
-  var im=curImg();if(!im){closeSheet();return;}
-  if(b.dataset.isz){
-    var pct=+b.dataset.isz,d=imgDims(+im.getAttribute('data-nw')||im.naturalWidth,+im.getAttribute('data-nh')||im.naturalHeight,pct);
-    im.setAttribute('width',d[0]);im.setAttribute('height',d[1]);im.setAttribute('data-pct',pct);
-    onEdit();
-    var a=sheet.querySelectorAll('[data-isz]');for(var i=0;i<a.length;i++)a[i].classList.toggle('on',a[i]===b);
-  }else{
-    if(armed!=='idel'){armed='idel';b.classList.add('warn');b.querySelector('span').textContent=L().sure;return;}
-    armed=null;
-    var p=im.parentNode;im.remove();
-    if(p&&p!==ed&&!p.textContent&&!p.querySelector('img'))p.innerHTML='<br>';
-    closeSheet();onEdit();
-  }
+paper.addEventListener('pointerdown',function(e){
+  var h=e.target.closest&&e.target.closest('#isel .hd');
+  if(!h)return;
+  var im=curImg();if(!im)return;
+  e.preventDefault();
+  var ps=pgbox.clientWidth/PW||1,sx=e.clientX,sy=e.clientY,w0=im.offsetWidth,h0=im.offsetHeight,t=h.dataset.h,sg=paper.getAttribute('dir')==='rtl'?-1:1;
+  try{h.setPointerCapture(e.pointerId);}catch(x){}
+  var mv=function(ev){
+    var dx=sg*(ev.clientX-sx)/ps,dy=(ev.clientY-sy)/ps,W=w0,H=h0;
+    if(t==='w')W=w0+dx;
+    else if(t==='h')H=h0+dy;
+    else{var k=1+(dx/w0+dy/h0)/2;W=w0*k;H=h0*k;}
+    W=Math.max(40,Math.min(400,W));H=Math.max(30,Math.min(560,H));
+    im.setAttribute('width',Math.round(W));im.setAttribute('height',Math.round(H));selPos();
+  };
+  var up=function(){
+    h.removeEventListener('pointermove',mv);h.removeEventListener('pointerup',up);h.removeEventListener('pointercancel',up);
+    onEdit();selPos();
+  };
+  h.addEventListener('pointermove',mv);h.addEventListener('pointerup',up);h.addEventListener('pointercancel',up);
 });
-window.addEventListener('afterprint',function(){$('printRoot').innerHTML='';});
+paper.addEventListener('click',function(e){
+  var t=e.target.closest&&e.target.closest('.itrash');if(!t)return;
+  var im=curImg();if(!im){selHide();return;}
+  if(!isArm){isArm=true;t.classList.add('warn');return;}
+  var p=im.parentNode;im.remove();
+  if(p&&p!==ed&&!p.textContent&&!p.querySelector('img'))p.innerHTML='<br>';
+  selHide();onEdit();
+});
 
 if(db.seedSig===JSON.stringify(0)){db.seedSig=ss(stripU(db.nbs));}
 /* ---------- account & sync (Firebase, local-first) ---------- */
