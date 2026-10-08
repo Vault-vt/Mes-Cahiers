@@ -332,6 +332,7 @@ div.cover{cursor:pointer;-webkit-tap-highlight-color:transparent}
 .vhead{display:flex;align-items:center;gap:12px}
 .vplay{width:46px;height:46px;border-radius:50%;background:var(--primary);color:var(--mark);display:grid;place-items:center;flex:none}
 .vplay svg{width:18px;height:18px}
+.vplay:disabled{opacity:.3}
 .vmeta{flex:1;min-width:0;cursor:pointer}
 .vmeta b{display:block;font-size:16px;font-weight:800;line-height:1.3;overflow-wrap:anywhere}
 .vmeta small{color:var(--muted);font-size:12.5px}
@@ -472,7 +473,7 @@ var P={
 function svg(n){return '<svg class="i" viewBox="0 0 24 24">'+P[n]+'</svg>';}
 
 var T={
-  ar:{nlEn:'English',navBooks:'الدفاتر',navVoice:'الصوتيات',vT:'الملاحظات الصوتية',vSub:'كل تسجيلاتك في مكان واحد',vSrch:'ابحث في العناوين والنصوص…',vNone:'لا توجد تسجيلات بعد.\nاضغط على الزر الأصفر وابدأ الكلام.',vNoRes:'لا نتائج',vNoTxt:'لا يوجد نص لهذا التسجيل',vCopy:'نسخ النص',vCopied:'تم النسخ',vShare:'مشاركة',vSave:'حفظ في الهاتف',vRen:'تسمية',vDel:'حذف',vSure:'تأكيد الحذف',vNew:'ملاحظة صوتية جديدة',vTitleL:'عنوان الملاحظة',vDefT:'ملاحظة صوتية',vTrL:'اكتب ما أقوله',vTrH:'يتحول كلامك إلى نص تحت التسجيل',vTrNo:'هذا المتصفح لا يدعم تحويل الصوت إلى نص، لكن التسجيل سيُحفظ.',vTrFail:'تعذّر تحويل الكلام إلى نص على هذا الهاتف، والتسجيل مستمر.',vRecNow:'جارٍ التسجيل',vPaused:'متوقف مؤقتاً',vReady:'جاهز',vSaveBtn:'حفظ الملاحظة',vCancel:'إلغاء',vLive:'النص المباشر',vMic:'اسمح للتطبيق باستخدام الميكروفون لتسجيل الصوت',vNoMic:'الميكروفون غير متاح على هذا الجهاز',vShT:'مشاركة التسجيل',vShTxt:'مشاركة النص',vShAud:'مشاركة الصوت',vSv:'حفظ الصوت في الهاتف',vSaved:'تم الحفظ',vRenT:'اسم التسجيل',vOK:'حفظ',vTxtEdit:'تعديل النص',vTxtL:'النص',snap:'تقويم',snapOn:'التقويم يعمل: أبقِ إصبعك ثانية في نهاية الرسم فيستقيم',snapOff:'تم إيقاف التقويم',tCheck:'تدقيق',ckT:'تدقيق الكتابة',ckLangL:'اختر لغة التدقيق',ckScL:'نطاق التدقيق',ckPg:'هذه الصفحة',ckNb:'كل الدفتر',ckLoad:'جارٍ تحميل القاموس…',ckOff:'تعذّر تحميل القاموس. اتصل بالإنترنت مرة واحدة ثم يعمل بدونه.',ckNone:'لا توجد أخطاء إملائية',ckFound:function(n){return n+' كلمة تحتاج تصحيحاً';},ckHint:'اضغط على الاقتراح لتغييره، أو ألغِ التحديد لترك الكلمة كما هي',ckFix:function(n){return 'صحّح الكل ('+n+')';},ckAdd:'أضف إلى قاموسي',ckDone:function(n){return 'تم تصحيح '+n+' كلمة';},ckUndo:'تراجع',ckNote:'التدقيق إملائي: يكشف الكلمات الخاطئة ويقترح الصحيح، ولا يراجع القواعد النحوية.',ckNoSug:'لا اقتراح',ckWait:'جارٍ التدقيق…',sortNb:'ترتيب الدفاتر',sortDone:'تم',pSort:'ترتيب',mvHint:'استخدم الأسهم لتحريك الدفتر',mvHintP:'استخدم الأسهم لتحريك الصفحة',prvCover:'غلاف الدفتر وفهرس الصفحات',prvHead:'العنوان ورقم الصفحة',pdOpen:'تعذّر فتح نافذة الطباعة — اسمح بالنوافذ المنبثقة',pdBtn:'طباعة / حفظ PDF',pdClose:'إغلاق',pdHint:'اضغط «طباعة» ثم اختر «حفظ كـ PDF» أو الطابعة.',cvPages:function(n){return n===1?'صفحة واحدة':n===2?'صفحتان':n<=10?n+' صفحات':n+' صفحة';},tocT:'الفهرس',tocUn:'بدون عنوان',pSel:'تحديد',pSelAll:'الكل',pDone:'تم',pDelN:function(n){return 'حذف ('+n+')';},pDelSure:function(n){return 'تأكيد حذف '+n+'؟';},pSelHint:'اضغط على الصفحات لتحديدها',sNb:'ابحث عن دفتر…',sNbT:'البحث عن دفتر',pgQ:'ابحث في الصفحات (رقم أو كلمة)…',newPg:'صفحة جديدة',mOpen:'فتح الدفتر',mPrint:'طباعة / PDF',mSet:'إعدادات الدفتر',prvT:'معاينة الطباعة',prvAll:'تحديد الكل',prvNone:'إلغاء التحديد',prvR:'اكتب أرقام الصفحات: 1-3 5 8',prvPrint:function(n){return 'طباعة ('+n+')';},prvCnt:function(n,t){return n+' من '+t+' صفحة محددة';},prvLines:'الأسطر والمربعات',prvNo:'اختر صفحة واحدة على الأقل',tImg:'صورة',imgT:'إضافة صورة',imgCam:'التقاط صورة',imgGal:'اختيار من المعرض',imgSz:'حجم الصورة',imgDel:'حذف الصورة',imgBig:'هذه الصفحة ممتلئة بالصور، احذف صورة أو أضف صفحة جديدة',imgErr:'تعذّر فتح الصورة',noSpace:'مساحة التخزين ممتلئة — احذف بعض الصور',imgNote:'تُضغط الصورة تلقائياً لتبقى الدفاتر خفيفة.',pgFull:'امتلأت الصفحة — فُتحت صفحة جديدة',nbLangL:'لغة هذا الدفتر',nlAr:'العربية',nlFr:'Français',pdfP:'طباعة هذه الصفحة',pdfA:'طباعة كل الدفتر',cvCustom:'لون آخر للغلاف',acTitle:'حسابي',acIntro:'سجّل الدخول بالبريد الإلكتروني لتجد دفاترك على كل أجهزتك.',acEmail:'البريد الإلكتروني',acPass:'كلمة المرور',acIn:'تسجيل الدخول',acUp:'إنشاء حساب جديد',acForgot:'نسيت كلمة المرور؟',acOut:'تسجيل الخروج',acHow:'تُحفظ دفاترك على هذا الجهاز وتتزامن تلقائياً عند توفر الإنترنت، ويمكنك الكتابة بدونه.',syOk:'متزامن',syBusy:'جارٍ المزامنة…',syOff:'بدون إنترنت — سيتم الحفظ لاحقاً',acBad:'البريد أو كلمة المرور غير صحيحة',acExists:'هذا البريد مسجّل من قبل، سجّل الدخول',acWeak:'كلمة المرور ضعيفة (6 أحرف على الأقل)',acMail:'اكتب بريداً إلكترونياً صحيحاً',acNet:'لا يوجد اتصال بالإنترنت',acMany:'محاولات كثيرة، انتظر قليلاً',acConf:'الحساب بالبريد غير مفعّل في Firebase',acNoPw:'اكتب كلمة المرور',acSent:'أرسلنا رابط إعادة التعيين إلى بريدك',acWelcome:'مرحباً! تتم المزامنة الآن',acBye:'تم تسجيل الخروج',acGone:'تم حذف هذا الدفتر من جهاز آخر',acBig:'صفحة كبيرة جداً لا يمكن مزامنتها',acNone:'المزامنة غير مفعّلة بعد: أضف إعدادات Firebase في أعلى الملف index.html',acArt:'الحساب والمزامنة يعملان من الموقع المنشور وليس من هذه المعاينة',tools:'الأدوات',hideT:'إخفاء الأدوات',app:'دفاتري',myNbs:'دفاتري',sub:'اختر دفتراً وابدأ كتابة دروسك',search:'ابحث بكلمة في كل الدفاتر…',newNb:'دفتر جديد',
+  ar:{vAnd:'في هواتف أندرويد لا يمكن تسجيل الصوت والكتابة معاً. عند التفعيل يُحفظ النص فقط، وعند الإيقاف يُحفظ الصوت فقط.',vNoAud:'نص فقط (بدون صوت)',nlEn:'English',navBooks:'الدفاتر',navVoice:'الصوتيات',vT:'الملاحظات الصوتية',vSub:'كل تسجيلاتك في مكان واحد',vSrch:'ابحث في العناوين والنصوص…',vNone:'لا توجد تسجيلات بعد.\nاضغط على الزر الأصفر وابدأ الكلام.',vNoRes:'لا نتائج',vNoTxt:'لا يوجد نص لهذا التسجيل',vCopy:'نسخ النص',vCopied:'تم النسخ',vShare:'مشاركة',vSave:'حفظ في الهاتف',vRen:'تسمية',vDel:'حذف',vSure:'تأكيد الحذف',vNew:'ملاحظة صوتية جديدة',vTitleL:'عنوان الملاحظة',vDefT:'ملاحظة صوتية',vTrL:'اكتب ما أقوله',vTrH:'يتحول كلامك إلى نص تحت التسجيل',vTrNo:'هذا المتصفح لا يدعم تحويل الصوت إلى نص، لكن التسجيل سيُحفظ.',vTrFail:'تعذّر تحويل الكلام إلى نص على هذا الهاتف، والتسجيل مستمر.',vRecNow:'جارٍ التسجيل',vPaused:'متوقف مؤقتاً',vReady:'جاهز',vSaveBtn:'حفظ الملاحظة',vCancel:'إلغاء',vLive:'النص المباشر',vMic:'اسمح للتطبيق باستخدام الميكروفون لتسجيل الصوت',vNoMic:'الميكروفون غير متاح على هذا الجهاز',vShT:'مشاركة التسجيل',vShTxt:'مشاركة النص',vShAud:'مشاركة الصوت',vSv:'حفظ الصوت في الهاتف',vSaved:'تم الحفظ',vRenT:'اسم التسجيل',vOK:'حفظ',vTxtEdit:'تعديل النص',vTxtL:'النص',snap:'تقويم',snapOn:'التقويم يعمل: أبقِ إصبعك ثانية في نهاية الرسم فيستقيم',snapOff:'تم إيقاف التقويم',tCheck:'تدقيق',ckT:'تدقيق الكتابة',ckLangL:'اختر لغة التدقيق',ckScL:'نطاق التدقيق',ckPg:'هذه الصفحة',ckNb:'كل الدفتر',ckLoad:'جارٍ تحميل القاموس…',ckOff:'تعذّر تحميل القاموس. اتصل بالإنترنت مرة واحدة ثم يعمل بدونه.',ckNone:'لا توجد أخطاء إملائية',ckFound:function(n){return n+' كلمة تحتاج تصحيحاً';},ckHint:'اضغط على الاقتراح لتغييره، أو ألغِ التحديد لترك الكلمة كما هي',ckFix:function(n){return 'صحّح الكل ('+n+')';},ckAdd:'أضف إلى قاموسي',ckDone:function(n){return 'تم تصحيح '+n+' كلمة';},ckUndo:'تراجع',ckNote:'التدقيق إملائي: يكشف الكلمات الخاطئة ويقترح الصحيح، ولا يراجع القواعد النحوية.',ckNoSug:'لا اقتراح',ckWait:'جارٍ التدقيق…',sortNb:'ترتيب الدفاتر',sortDone:'تم',pSort:'ترتيب',mvHint:'استخدم الأسهم لتحريك الدفتر',mvHintP:'استخدم الأسهم لتحريك الصفحة',prvCover:'غلاف الدفتر وفهرس الصفحات',prvHead:'العنوان ورقم الصفحة',pdOpen:'تعذّر فتح نافذة الطباعة — اسمح بالنوافذ المنبثقة',pdBtn:'طباعة / حفظ PDF',pdClose:'إغلاق',pdHint:'اضغط «طباعة» ثم اختر «حفظ كـ PDF» أو الطابعة.',cvPages:function(n){return n===1?'صفحة واحدة':n===2?'صفحتان':n<=10?n+' صفحات':n+' صفحة';},tocT:'الفهرس',tocUn:'بدون عنوان',pSel:'تحديد',pSelAll:'الكل',pDone:'تم',pDelN:function(n){return 'حذف ('+n+')';},pDelSure:function(n){return 'تأكيد حذف '+n+'؟';},pSelHint:'اضغط على الصفحات لتحديدها',sNb:'ابحث عن دفتر…',sNbT:'البحث عن دفتر',pgQ:'ابحث في الصفحات (رقم أو كلمة)…',newPg:'صفحة جديدة',mOpen:'فتح الدفتر',mPrint:'طباعة / PDF',mSet:'إعدادات الدفتر',prvT:'معاينة الطباعة',prvAll:'تحديد الكل',prvNone:'إلغاء التحديد',prvR:'اكتب أرقام الصفحات: 1-3 5 8',prvPrint:function(n){return 'طباعة ('+n+')';},prvCnt:function(n,t){return n+' من '+t+' صفحة محددة';},prvLines:'الأسطر والمربعات',prvNo:'اختر صفحة واحدة على الأقل',tImg:'صورة',imgT:'إضافة صورة',imgCam:'التقاط صورة',imgGal:'اختيار من المعرض',imgSz:'حجم الصورة',imgDel:'حذف الصورة',imgBig:'هذه الصفحة ممتلئة بالصور، احذف صورة أو أضف صفحة جديدة',imgErr:'تعذّر فتح الصورة',noSpace:'مساحة التخزين ممتلئة — احذف بعض الصور',imgNote:'تُضغط الصورة تلقائياً لتبقى الدفاتر خفيفة.',pgFull:'امتلأت الصفحة — فُتحت صفحة جديدة',nbLangL:'لغة هذا الدفتر',nlAr:'العربية',nlFr:'Français',pdfP:'طباعة هذه الصفحة',pdfA:'طباعة كل الدفتر',cvCustom:'لون آخر للغلاف',acTitle:'حسابي',acIntro:'سجّل الدخول بالبريد الإلكتروني لتجد دفاترك على كل أجهزتك.',acEmail:'البريد الإلكتروني',acPass:'كلمة المرور',acIn:'تسجيل الدخول',acUp:'إنشاء حساب جديد',acForgot:'نسيت كلمة المرور؟',acOut:'تسجيل الخروج',acHow:'تُحفظ دفاترك على هذا الجهاز وتتزامن تلقائياً عند توفر الإنترنت، ويمكنك الكتابة بدونه.',syOk:'متزامن',syBusy:'جارٍ المزامنة…',syOff:'بدون إنترنت — سيتم الحفظ لاحقاً',acBad:'البريد أو كلمة المرور غير صحيحة',acExists:'هذا البريد مسجّل من قبل، سجّل الدخول',acWeak:'كلمة المرور ضعيفة (6 أحرف على الأقل)',acMail:'اكتب بريداً إلكترونياً صحيحاً',acNet:'لا يوجد اتصال بالإنترنت',acMany:'محاولات كثيرة، انتظر قليلاً',acConf:'الحساب بالبريد غير مفعّل في Firebase',acNoPw:'اكتب كلمة المرور',acSent:'أرسلنا رابط إعادة التعيين إلى بريدك',acWelcome:'مرحباً! تتم المزامنة الآن',acBye:'تم تسجيل الخروج',acGone:'تم حذف هذا الدفتر من جهاز آخر',acBig:'صفحة كبيرة جداً لا يمكن مزامنتها',acNone:'المزامنة غير مفعّلة بعد: أضف إعدادات Firebase في أعلى الملف index.html',acArt:'الحساب والمزامنة يعملان من الموقع المنشور وليس من هذه المعاينة',tools:'الأدوات',hideT:'إخفاء الأدوات',app:'دفاتري',myNbs:'دفاتري',sub:'اختر دفتراً وابدأ كتابة دروسك',search:'ابحث بكلمة في كل الدفاتر…',newNb:'دفتر جديد',
     pagesN:function(n){return n===1?'صفحة واحدة':n===2?'صفحتان':n<=10?n+' صفحات':n+' صفحة';},nbDef:function(n){return 'دفتر '+n;},untitled:'بدون عنوان',pTitle:'عنوان الدرس',ph:'اضغط هنا وابدأ الكتابة…',
     tWrite:'كتابة',tHl:'تظليل',tColor:'لون الخط',tDraw:'رسم',tScan:'مسح ضوئي',scTitle:'مسح ورقة إلى نص',scLang:'لغة الورقة',lAr:'عربي',lFr:'Français',lBoth:'الاثنان',scShot:'التقاط صورة للورقة',scGal:'اختيار صورة من المعرض',scNote:'صوّر الورقة بوضوح وفي ضوء جيد وبدون ظلال. أول مرة يحتاج إنترنت لتحميل ملفات اللغة.',scBusy1:'تحميل ملفات اللغة…',scBusy2:'قراءة النص…',scDone:'راجع النص وصحّحه ثم أضفه إلى الصفحة',scAdd:'أضف النص إلى الصفحة',scErr:'تعذّر المسح. تأكد من الإنترنت وحاول مرة أخرى.',scEmpty:'لم أجد نصاً في الصورة. جرّب صورة أوضح.',scArt:'المسح الضوئي يعمل من الموقع المنشور أو من الملف، وليس من هذه المعاينة',
     hWrite:'اضغط على الورقة واكتب. حدّد نصاً لتنسيقه.',fs:'حجم الخط',more:'كل الألوان',allC:'كل الألوان',custom:'لون مخصص',pagesT:'كل الصفحات',sInNb:'ابحث في هذا الدفتر…',bold:'عريض',under:'تسطير',title:'عنوان',list:'قائمة',normal:'عادي',
@@ -481,7 +482,7 @@ var T={
     set:'إعدادات الدفتر',nbName:'اسم الدفتر',cover:'لون الغلاف',paper:'شكل الورقة',lined:'مسطّر',grid:'مربعات',plain:'أبيض',
     pdf:'تصدير PDF للطباعة',fsL:'حجم الخط في هذا الدفتر',delPage:'حذف هذه الصفحة',delNb:'حذف الدفتر كله',noRes:'لا توجد نتائج',
     pdfNote:'الطباعة بصيغة PDF تعمل من نسخة الملف في المتصفح'},
-  fr:{nlEn:'English',navBooks:'Cahiers',navVoice:'Notes vocales',vT:'Notes vocales',vSub:'Tous vos enregistrements au même endroit',vSrch:'Chercher dans les titres et textes…',vNone:"Aucun enregistrement pour l'instant.\nAppuyez sur le bouton jaune et parlez.",vNoRes:'Aucun résultat',vNoTxt:'Pas de texte pour cet enregistrement',vCopy:'Copier le texte',vCopied:'Copié',vShare:'Partager',vSave:'Enregistrer',vRen:'Renommer',vDel:'Supprimer',vSure:'Confirmer',vNew:'Nouvelle note vocale',vTitleL:'Titre de la note',vDefT:'Note vocale',vTrL:'Écrire ce que je dis',vTrH:'Votre voix est transformée en texte sous l’enregistrement',vTrNo:'Ce navigateur ne sait pas transcrire la voix, mais l’enregistrement sera conservé.',vTrFail:'Transcription impossible sur ce téléphone, l’enregistrement continue.',vRecNow:'Enregistrement…',vPaused:'En pause',vReady:'Prêt',vSaveBtn:'Enregistrer la note',vCancel:'Annuler',vLive:'Texte en direct',vMic:'Autorisez le micro pour enregistrer',vNoMic:'Micro indisponible sur cet appareil',vShT:'Partager l’enregistrement',vShTxt:'Partager le texte',vShAud:'Partager l’audio',vSv:'Enregistrer l’audio sur le téléphone',vSaved:'Enregistré',vRenT:'Nom de l’enregistrement',vOK:'Enregistrer',vTxtEdit:'Modifier le texte',vTxtL:'Texte',snap:'Redresser',snapOn:'Redressement actif : gardez le doigt immobile à la fin du tracé',snapOff:'Redressement désactivé',tCheck:'Vérifier',ckT:"Correcteur d'orthographe",ckLangL:'Langue à vérifier',ckScL:'Portée',ckPg:'Cette page',ckNb:'Tout le cahier',ckLoad:'Chargement du dictionnaire…',ckOff:'Dictionnaire indisponible. Connectez-vous une fois à Internet, puis il fonctionne hors ligne.',ckNone:"Aucune faute d'orthographe",ckFound:function(n){return n+' mot'+(n>1?'s':'')+' à corriger';},ckHint:'Touchez la suggestion pour la changer, ou décochez pour garder le mot',ckFix:function(n){return 'Tout corriger ('+n+')';},ckAdd:'Ajouter à mon dictionnaire',ckDone:function(n){return n+' mot'+(n>1?'s':'')+' corrigé'+(n>1?'s':'');},ckUndo:'Annuler',ckNote:"Vérification orthographique uniquement : la grammaire n'est pas contrôlée.",ckNoSug:'Aucune suggestion',ckWait:'Vérification…',sortNb:'Réorganiser',sortDone:'Terminer',pSort:'Ordre',mvHint:'Utilisez les flèches pour déplacer le cahier',mvHintP:'Utilisez les flèches pour déplacer la page',prvCover:'Couverture et sommaire',prvHead:'Titre et numéro de page',pdOpen:"Impossible d'ouvrir la fenêtre d'impression — autorisez les fenêtres",pdBtn:'Imprimer / Enregistrer en PDF',pdClose:'Fermer',pdHint:'Touchez « Imprimer » puis choisissez « Enregistrer en PDF » ou une imprimante.',cvPages:function(n){return n+' page'+(n>1?'s':'');},tocT:'Sommaire',tocUn:'Sans titre',pSel:'Sélectionner',pSelAll:'Tout',pDone:'Terminer',pDelN:function(n){return 'Supprimer ('+n+')';},pDelSure:function(n){return 'Confirmer la suppression de '+n+' ?';},pSelHint:'Touchez les pages à sélectionner',sNb:'Chercher un cahier…',sNbT:'Chercher un cahier',pgQ:'Chercher une page (numéro ou mot)…',newPg:'Nouvelle page',mOpen:'Ouvrir le cahier',mPrint:'Imprimer / PDF',mSet:'Réglages du cahier',prvT:'Aperçu avant impression',prvAll:'Tout sélectionner',prvNone:'Tout désélectionner',prvR:'Numéros de pages : 1-3 5 8',prvPrint:function(n){return 'Imprimer ('+n+')';},prvCnt:function(n,t){return n+' sur '+t+' page'+(t>1?'s':'')+' sélectionnée'+(n>1?'s':'');},prvLines:'Lignes et carreaux',prvNo:'Choisissez au moins une page',tImg:'Image',imgT:'Ajouter une image',imgCam:'Prendre une photo',imgGal:'Choisir dans la galerie',imgSz:"Taille de l'image",imgDel:"Supprimer l'image",imgBig:'Cette page est pleine d\'images : supprimez-en une ou ajoutez une page',imgErr:"Image illisible",noSpace:'Stockage plein — supprimez des images',imgNote:'Les images sont compressées automatiquement pour garder des cahiers légers.',pgFull:'Page pleine : une nouvelle page a été ajoutée',nbLangL:'Langue de ce cahier',nlAr:'العربية',nlFr:'Français',pdfP:'Imprimer cette page',pdfA:'Imprimer tout le cahier',cvCustom:'Autre couleur de couverture',acTitle:'Mon compte',acIntro:'Connectez-vous avec votre e-mail pour retrouver vos cahiers sur tous vos appareils.',acEmail:'E-mail',acPass:'Mot de passe',acIn:'Se connecter',acUp:'Créer un compte',acForgot:'Mot de passe oublié ?',acOut:'Se déconnecter',acHow:'Vos cahiers sont enregistrés sur cet appareil et synchronisés automatiquement dès qu’il y a Internet. Vous pouvez écrire sans connexion.',syOk:'Synchronisé',syBusy:'Synchronisation…',syOff:'Hors ligne — envoi plus tard',acBad:'E-mail ou mot de passe incorrect',acExists:'Cet e-mail a déjà un compte, connectez-vous',acWeak:'Mot de passe trop faible (6 caractères minimum)',acMail:'Saisissez un e-mail valide',acNet:'Pas de connexion Internet',acMany:'Trop d’essais, patientez un peu',acConf:'La connexion par e-mail n’est pas activée dans Firebase',acNoPw:'Saisissez le mot de passe',acSent:'Lien de réinitialisation envoyé à votre e-mail',acWelcome:'Bienvenue ! Synchronisation en cours',acBye:'Déconnecté',acGone:'Ce cahier a été supprimé depuis un autre appareil',acBig:'Page trop volumineuse pour être synchronisée',acNone:'La synchronisation n’est pas encore activée : ajoutez la configuration Firebase en haut de index.html',acArt:'Le compte et la synchronisation fonctionnent depuis le site publié, pas depuis cet aperçu',tools:'Outils',hideT:'Masquer les outils',app:'Mes Cahiers',myNbs:'Mes cahiers',sub:'Choisissez un cahier et écrivez vos leçons',search:'Chercher un mot dans tous les cahiers…',newNb:'Nouveau cahier',
+  fr:{vAnd:"Sur Android, la voix et le texte ne peuvent pas être enregistrés ensemble. Activé : seul le texte est gardé. Désactivé : seul l’audio est gardé.",vNoAud:'Texte seulement (sans audio)',nlEn:'English',navBooks:'Cahiers',navVoice:'Notes vocales',vT:'Notes vocales',vSub:'Tous vos enregistrements au même endroit',vSrch:'Chercher dans les titres et textes…',vNone:"Aucun enregistrement pour l'instant.\nAppuyez sur le bouton jaune et parlez.",vNoRes:'Aucun résultat',vNoTxt:'Pas de texte pour cet enregistrement',vCopy:'Copier le texte',vCopied:'Copié',vShare:'Partager',vSave:'Enregistrer',vRen:'Renommer',vDel:'Supprimer',vSure:'Confirmer',vNew:'Nouvelle note vocale',vTitleL:'Titre de la note',vDefT:'Note vocale',vTrL:'Écrire ce que je dis',vTrH:'Votre voix est transformée en texte sous l’enregistrement',vTrNo:'Ce navigateur ne sait pas transcrire la voix, mais l’enregistrement sera conservé.',vTrFail:'Transcription impossible sur ce téléphone, l’enregistrement continue.',vRecNow:'Enregistrement…',vPaused:'En pause',vReady:'Prêt',vSaveBtn:'Enregistrer la note',vCancel:'Annuler',vLive:'Texte en direct',vMic:'Autorisez le micro pour enregistrer',vNoMic:'Micro indisponible sur cet appareil',vShT:'Partager l’enregistrement',vShTxt:'Partager le texte',vShAud:'Partager l’audio',vSv:'Enregistrer l’audio sur le téléphone',vSaved:'Enregistré',vRenT:'Nom de l’enregistrement',vOK:'Enregistrer',vTxtEdit:'Modifier le texte',vTxtL:'Texte',snap:'Redresser',snapOn:'Redressement actif : gardez le doigt immobile à la fin du tracé',snapOff:'Redressement désactivé',tCheck:'Vérifier',ckT:"Correcteur d'orthographe",ckLangL:'Langue à vérifier',ckScL:'Portée',ckPg:'Cette page',ckNb:'Tout le cahier',ckLoad:'Chargement du dictionnaire…',ckOff:'Dictionnaire indisponible. Connectez-vous une fois à Internet, puis il fonctionne hors ligne.',ckNone:"Aucune faute d'orthographe",ckFound:function(n){return n+' mot'+(n>1?'s':'')+' à corriger';},ckHint:'Touchez la suggestion pour la changer, ou décochez pour garder le mot',ckFix:function(n){return 'Tout corriger ('+n+')';},ckAdd:'Ajouter à mon dictionnaire',ckDone:function(n){return n+' mot'+(n>1?'s':'')+' corrigé'+(n>1?'s':'');},ckUndo:'Annuler',ckNote:"Vérification orthographique uniquement : la grammaire n'est pas contrôlée.",ckNoSug:'Aucune suggestion',ckWait:'Vérification…',sortNb:'Réorganiser',sortDone:'Terminer',pSort:'Ordre',mvHint:'Utilisez les flèches pour déplacer le cahier',mvHintP:'Utilisez les flèches pour déplacer la page',prvCover:'Couverture et sommaire',prvHead:'Titre et numéro de page',pdOpen:"Impossible d'ouvrir la fenêtre d'impression — autorisez les fenêtres",pdBtn:'Imprimer / Enregistrer en PDF',pdClose:'Fermer',pdHint:'Touchez « Imprimer » puis choisissez « Enregistrer en PDF » ou une imprimante.',cvPages:function(n){return n+' page'+(n>1?'s':'');},tocT:'Sommaire',tocUn:'Sans titre',pSel:'Sélectionner',pSelAll:'Tout',pDone:'Terminer',pDelN:function(n){return 'Supprimer ('+n+')';},pDelSure:function(n){return 'Confirmer la suppression de '+n+' ?';},pSelHint:'Touchez les pages à sélectionner',sNb:'Chercher un cahier…',sNbT:'Chercher un cahier',pgQ:'Chercher une page (numéro ou mot)…',newPg:'Nouvelle page',mOpen:'Ouvrir le cahier',mPrint:'Imprimer / PDF',mSet:'Réglages du cahier',prvT:'Aperçu avant impression',prvAll:'Tout sélectionner',prvNone:'Tout désélectionner',prvR:'Numéros de pages : 1-3 5 8',prvPrint:function(n){return 'Imprimer ('+n+')';},prvCnt:function(n,t){return n+' sur '+t+' page'+(t>1?'s':'')+' sélectionnée'+(n>1?'s':'');},prvLines:'Lignes et carreaux',prvNo:'Choisissez au moins une page',tImg:'Image',imgT:'Ajouter une image',imgCam:'Prendre une photo',imgGal:'Choisir dans la galerie',imgSz:"Taille de l'image",imgDel:"Supprimer l'image",imgBig:'Cette page est pleine d\'images : supprimez-en une ou ajoutez une page',imgErr:"Image illisible",noSpace:'Stockage plein — supprimez des images',imgNote:'Les images sont compressées automatiquement pour garder des cahiers légers.',pgFull:'Page pleine : une nouvelle page a été ajoutée',nbLangL:'Langue de ce cahier',nlAr:'العربية',nlFr:'Français',pdfP:'Imprimer cette page',pdfA:'Imprimer tout le cahier',cvCustom:'Autre couleur de couverture',acTitle:'Mon compte',acIntro:'Connectez-vous avec votre e-mail pour retrouver vos cahiers sur tous vos appareils.',acEmail:'E-mail',acPass:'Mot de passe',acIn:'Se connecter',acUp:'Créer un compte',acForgot:'Mot de passe oublié ?',acOut:'Se déconnecter',acHow:'Vos cahiers sont enregistrés sur cet appareil et synchronisés automatiquement dès qu’il y a Internet. Vous pouvez écrire sans connexion.',syOk:'Synchronisé',syBusy:'Synchronisation…',syOff:'Hors ligne — envoi plus tard',acBad:'E-mail ou mot de passe incorrect',acExists:'Cet e-mail a déjà un compte, connectez-vous',acWeak:'Mot de passe trop faible (6 caractères minimum)',acMail:'Saisissez un e-mail valide',acNet:'Pas de connexion Internet',acMany:'Trop d’essais, patientez un peu',acConf:'La connexion par e-mail n’est pas activée dans Firebase',acNoPw:'Saisissez le mot de passe',acSent:'Lien de réinitialisation envoyé à votre e-mail',acWelcome:'Bienvenue ! Synchronisation en cours',acBye:'Déconnecté',acGone:'Ce cahier a été supprimé depuis un autre appareil',acBig:'Page trop volumineuse pour être synchronisée',acNone:'La synchronisation n’est pas encore activée : ajoutez la configuration Firebase en haut de index.html',acArt:'Le compte et la synchronisation fonctionnent depuis le site publié, pas depuis cet aperçu',tools:'Outils',hideT:'Masquer les outils',app:'Mes Cahiers',myNbs:'Mes cahiers',sub:'Choisissez un cahier et écrivez vos leçons',search:'Chercher un mot dans tous les cahiers…',newNb:'Nouveau cahier',
     pagesN:function(n){return n+' page'+(n>1?'s':'');},nbDef:function(n){return 'Cahier '+n;},untitled:'Sans titre',pTitle:'Titre de la leçon',ph:'Touchez ici et commencez à écrire…',
     tWrite:'Écrire',tHl:'Surligner',tColor:'Couleur',tDraw:'Dessin',tScan:'Scanner',scTitle:'Scanner une feuille en texte',scLang:'Langue de la feuille',lAr:'Arabe',lFr:'Français',lBoth:'Les deux',scShot:'Photographier la feuille',scGal:'Choisir une photo de la galerie',scNote:'Photographiez la feuille bien nette, avec une bonne lumière, sans ombre. La première fois, internet est nécessaire pour télécharger les langues.',scBusy1:'Téléchargement des langues…',scBusy2:'Lecture du texte…',scDone:'Relisez et corrigez le texte, puis ajoutez-le à la page',scAdd:'Ajouter le texte à la page',scErr:"Échec du scan. Vérifiez internet et réessayez.",scEmpty:"Aucun texte trouvé. Essayez une photo plus nette.",scArt:"Le scanner fonctionne depuis le site publié ou le fichier, pas depuis cet aperçu",
     hWrite:'Touchez la feuille et écrivez. Sélectionnez un texte pour le mettre en forme.',fs:'Taille du texte',more:'Toutes',allC:'Toutes les couleurs',custom:'Couleur personnalisée',pagesT:'Toutes les pages',sInNb:'Chercher dans ce cahier…',bold:'Gras',under:'Souligné',title:'Titre',list:'Liste',normal:'Normal',
@@ -493,7 +494,7 @@ var T={
 };
 
 /* ---------- data ---------- */
-T.en=Object.assign({},T.fr,{nlEn:'English',ph:'Tap here and start writing…',pTitle:'Lesson title',cvPages:function(n){return n+' page'+(n>1?'s':'');},tocT:'Contents',tocUn:'Untitled',untitled:'Untitled'});
+T.en={vAnd:'On Android, voice and live text cannot be recorded together. Switch on: only the text is saved. Switch off: only the audio is saved.',vNoAud:'Text only (no audio)',nlEn:'English',navBooks:'Notebooks',navVoice:'Voice notes',vT:'Voice notes',vSub:'All your recordings in one place',vSrch:'Search titles and text…',vNone:"No recordings yet.\nTap the yellow button and start talking.",vNoRes:'No results',vNoTxt:'No text for this recording',vCopy:'Copy text',vCopied:'Copied',vShare:'Share',vSave:'Save',vRen:'Rename',vDel:'Delete',vSure:'Confirm',vNew:'New voice note',vTitleL:'Note title',vDefT:'Voice note',vTrL:'Write what I say',vTrH:'Your voice is turned into text under the recording',vTrNo:'This browser cannot transcribe speech, but the recording will be kept.',vTrFail:'Transcription is not possible on this phone; recording continues.',vRecNow:'Recording…',vPaused:'Paused',vReady:'Ready',vSaveBtn:'Save note',vCancel:'Cancel',vLive:'Live text',vMic:'Allow the microphone to record',vNoMic:'Microphone unavailable on this device',vShT:'Share recording',vShTxt:'Share text',vShAud:'Share audio',vSv:'Save audio to this phone',vSaved:'Saved',vRenT:'Recording name',vOK:'Save',vTxtEdit:'Edit text',vTxtL:'Text',snap:'Straighten',snapOn:'Straightening on: hold your finger still at the end of the stroke',snapOff:'Straightening off',tCheck:'Check',ckT:'Spell checker',ckLangL:'Language to check',ckScL:'Scope',ckPg:'This page',ckNb:'Whole notebook',ckLoad:'Loading dictionary…',ckOff:'Dictionary unavailable. Connect to the internet once; after that it works offline.',ckNone:'No spelling mistakes',ckFound:function(n){return n+' word'+(n>1?'s':'')+' to fix';},ckHint:'Tap a suggestion to change it, or untick to keep the word',ckFix:function(n){return 'Fix all ('+n+')';},ckAdd:'Add to my dictionary',ckDone:function(n){return n+' word'+(n>1?'s':'')+' fixed';},ckUndo:'Undo',ckNote:'Spelling only: grammar is not checked.',ckNoSug:'No suggestion',ckWait:'Checking…',sortNb:'Reorder',sortDone:'Done',pSort:'Order',mvHint:'Use the arrows to move the notebook',mvHintP:'Use the arrows to move the page',prvCover:'Cover and contents',prvHead:'Title and page number',pdOpen:'Could not open the print window — allow pop-ups',pdBtn:'Print / Save as PDF',pdClose:'Close',pdHint:'Tap “Print”, then choose “Save as PDF” or a printer.',cvPages:function(n){return n+' page'+(n>1?'s':'');},tocT:'Contents',tocUn:'Untitled',pSel:'Select',pSelAll:'All',pDone:'Done',pDelN:function(n){return 'Delete ('+n+')';},pDelSure:function(n){return 'Confirm deleting '+n+'?';},pSelHint:'Tap the pages to select',sNb:'Search a notebook…',sNbT:'Search a notebook',pgQ:'Search a page (number or word)…',newPg:'New page',mOpen:'Open notebook',mPrint:'Print / PDF',mSet:'Notebook settings',prvT:'Print preview',prvAll:'Select all',prvNone:'Deselect all',prvR:'Page numbers: 1-3 5 8',prvPrint:function(n){return 'Print ('+n+')';},prvCnt:function(n,t){return n+' of '+t+' page'+(t>1?'s':'')+' selected';},prvLines:'Lines and grid',prvNo:'Choose at least one page',tImg:'Image',imgT:'Add an image',imgCam:'Take a photo',imgGal:'Choose from gallery',imgSz:'Image size',imgDel:'Delete image',imgBig:'This page is full of images: delete one or add a page',imgErr:'Unreadable image',noSpace:'Storage full — delete some images',imgNote:'Images are compressed automatically to keep notebooks light.',pgFull:'Page full: a new page was added',nbLangL:'Notebook language',nlAr:'العربية',nlFr:'Français',pdfP:'Print this page',pdfA:'Print the whole notebook',cvCustom:'Other cover colour',acTitle:'My account',acIntro:'Sign in with your email to find your notebooks on all your devices.',acEmail:'Email',acPass:'Password',acIn:'Sign in',acUp:'Create account',acForgot:'Forgot password?',acOut:'Sign out',acHow:'Your notebooks are saved on this device and synced automatically whenever there is internet. You can write offline.',syOk:'Synced',syBusy:'Syncing…',syOff:'Offline — will send later',acBad:'Wrong email or password',acExists:'This email already has an account, please sign in',acWeak:'Password too weak (6 characters minimum)',acMail:'Enter a valid email',acNet:'No internet connection',acMany:'Too many attempts, please wait',acConf:'Email sign-in is not enabled in Firebase',acNoPw:'Enter the password',acSent:'Reset link sent to your email',acWelcome:'Welcome! Syncing…',acBye:'Signed out',acGone:'This notebook was deleted from another device',acBig:'Page too large to sync',acNone:'Sync is not enabled yet: add the Firebase configuration at the top of index.html',acArt:'Account and sync work from the published site, not from this preview',tools:'Tools',hideT:'Hide tools',app:'My Notebooks',myNbs:'My notebooks',sub:'Choose a notebook and write your lessons',search:'Search a word in all notebooks…',newNb:'New notebook',pagesN:function(n){return n+' page'+(n>1?'s':'');},nbDef:function(n){return 'Notebook '+n;},untitled:'Untitled',pTitle:'Lesson title',ph:'Tap here and start writing…',tWrite:'Write',tHl:'Highlight',tColor:'Colour',tDraw:'Draw',tScan:'Scan',scTitle:'Scan a sheet into text',scLang:'Sheet language',lAr:'Arabic',lFr:'French',lBoth:'Both',scShot:'Photograph the sheet',scGal:'Choose a photo from gallery',scNote:'Photograph the sheet sharply, in good light, with no shadow. The first time, internet is needed to download the languages.',scBusy1:'Downloading languages…',scBusy2:'Reading text…',scDone:'Review and correct the text, then add it to the page',scAdd:'Add text to page',scErr:'Scan failed. Check your internet and try again.',scEmpty:'No text found. Try a sharper photo.',scArt:'The scanner works from the published site or file, not from this preview',hWrite:'Tap the sheet and write. Select text to format it.',fs:'Text size',more:'All',allC:'All colours',custom:'Custom colour',pagesT:'All pages',sInNb:'Search in this notebook…',bold:'Bold',under:'Underline',title:'Heading',list:'List',normal:'Normal',hHl0:'Select the text to highlight, then pick a colour',hHl1:'Pick the highlight colour',hCol0:'Select the text to colour, then pick a colour',hCol1:'Pick the text colour',noHl:'None',pen:'Pen',marker:'Marker',eraser:'Eraser',hand:'Scroll',clear:'Clear',sure:'Confirm?',set:'Notebook settings',nbName:'Notebook name',cover:'Cover colour',paper:'Paper type',lined:'Lined',grid:'Grid',plain:'Plain',pdf:'Export PDF to print',fsL:'Text size in this notebook',delPage:'Delete this page',delNb:'Delete the whole notebook',noRes:'No results',pdfNote:'PDF printing works from the file opened in a browser'};
 var KEY='kerima-cahiers-v2';
 function uid(){return Math.random().toString(36).slice(2,9);}
 function mk(title,html,bg){return {id:uid(),title:title,html:html||'',bg:bg||'lined',strokes:[],hb:HB};}
@@ -532,7 +533,7 @@ function renderHome(){
   if(db.nbs.length<2)homeSort=false;
   var sr=$('sortRow');if(sr)sr.innerHTML=db.nbs.length>1?'<button class="pill'+(homeSort?' pri':'')+'" data-sortnb="1">'+(homeSort?l.sortDone:l.sortNb)+'</button>'+(homeSort?'<span class="note" style="margin:0 10px">'+l.mvHint+'</span>':''):'';
   $('brand').textContent=l.app;$('hSub').textContent=l.sub;$('hSearchT').textContent=l.sNb;
-  $('langBtn').textContent=db.lang==='ar'?'FR':'عربي';
+  $('langBtn').textContent=db.lang==='ar'?'FR':db.lang==='fr'?'EN':'عربي';
   db.nbs.forEach(function(n,ix){
     var mvb=homeSort?'<div class="mvbar"><button data-mvnb="-1"'+(ix===0?' disabled':'')+' aria-label="earlier">'+chev(-1)+'</button><b>'+(ix+1)+'</b><button data-mvnb="1"'+(ix===db.nbs.length-1?' disabled':'')+' aria-label="later">'+chev(1)+'</button></div>':'';
     h+='<div class="cover'+(homeSort?' sorting':'')+'" role="button" tabindex="0" data-nb="'+n.id+'" style="--c:'+n.color+'">'+(homeSort?mvb:'<button class="cmore" data-menu="'+n.id+'" aria-label="menu">'+svg('dots')+'</button>')+'<span class="cm">'+l.pagesN(n.pages.length)+'</span><span class="label">'+esc(nm(n.name)||l.untitled)+'</span><span class="rl"></span></div>';
@@ -883,6 +884,12 @@ function shapeFit(P){
   }
   return null;
 }
+function nearLine(P){
+  var a=P[0],b=P[P.length-1],c=Math.hypot(b[0]-a[0],b[1]-a[1]),i,m=0,len=0;
+  if(c<40)return false;
+  for(i=0;i<P.length;i++){m=Math.max(m,dseg(P[i],a,b));if(i)len+=Math.hypot(P[i][0]-P[i-1][0],P[i][1]-P[i-1][1]);}
+  return m<0.045*c&&len<1.12*c;
+}
 function holdReset(){
   clearTimeout(holdT);
   if(!drawing||drawing.erase)return;
@@ -891,7 +898,7 @@ function holdReset(){
     if(drawing&&live&&!drawing.snapped&&live.p.length>6){
       var sh=null;try{sh=shapeFit(live.p);}catch(e){}
       if(sh){live.p=sh;drawing.snapped='shape';}
-      else{live.p=[live.p[0],live.p[live.p.length-1]];drawing.snapped=true;}
+      else if(nearLine(live.p)){live.p=[live.p[0],live.p[live.p.length-1]];drawing.snapped=true;}
       redraw();
     }
   },550);
@@ -1033,7 +1040,7 @@ $('bBack').addEventListener('click',function(){showHome();});
 $('bMore').addEventListener('click',function(){openSettings();});
 $('bSearch').addEventListener('click',function(){if(FD.on)closeFind();else openFind();});
 $('hSearch').addEventListener('click',function(){openSearch(null);});
-$('langBtn').addEventListener('click',function(){db.lang=db.lang==='ar'?'fr':'ar';save();setLang();renderHome();renderNav();});
+$('langBtn').addEventListener('click',function(){db.lang=db.lang==='ar'?'fr':db.lang==='fr'?'en':'ar';save();setLang();renderHome();renderNav();});
 var lpT=0,lpFired=false;
 shelf.addEventListener('pointerdown',function(e){
   var c=e.target.closest('[data-nb]');if(!c||homeSort||e.target.closest('[data-menu]'))return;
@@ -1557,7 +1564,7 @@ function printDoc(list,n,o){
     +'<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">'
     +'<style>'+PRINT_CSS+'</style></head><body class="'+(o.lines?'':'nolines ')+(o.head?'':'nohead')+'">'
     +'<div class="top"><button class="x" onclick="window.close()" aria-label="'+esc(l.pdClose)+'">✕</button><button class="go" onclick="window.print()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><path d="M6 9V2h12v7M6 18H4a2 2 0 01-2-2v-5a2 2 0 012-2h16a2 2 0 012 2v5a2 2 0 01-2 2h-2M6 14h12v8H6z"/></svg>'+esc(l.pdBtn)+'</button></div>'
-    +'<div class="hint">'+esc(l.pdHint)+' <span dir="ltr">(v18)</span></div><div class="wrap">'+body+'</div></body></html>';
+    +'<div class="hint">'+esc(l.pdHint)+' <span dir="ltr">(v20)</span></div><div class="wrap">'+body+'</div></body></html>';
 }
 function exportPdf(list,n,o){
   if(window.claude){toast(L().pdfNote);return;}
@@ -1822,7 +1829,8 @@ sheet.addEventListener('click',function(e){
 
 /* ---------- voice notes (separate section, stored on this device in IndexedDB) ---------- */
 var voiceV=$('voiceV'),VN=[],VNLOADED=false,vOpen=null,vArm=null,vQuery='';
-var VR={on:false,paused:false,stream:null,mr:null,chunks:[],t0:0,acc:0,tick:0,ac:null,an:null,anT:0,sr:null,srOn:false,text:'',interim:'',want:true,mime:'',stopped:false,blob:null,dur:0,lang:'ar',fail:false};
+var ANDROID=/Android/i.test(navigator.userAgent||'');
+var VR={dictation:false,on:false,paused:false,stream:null,mr:null,chunks:[],t0:0,acc:0,tick:0,ac:null,an:null,anT:0,sr:null,srOn:false,text:'',interim:'',want:true,mime:'',stopped:false,blob:null,dur:0,lang:'ar',fail:false};
 function vdb(){return new Promise(function(res,rej){
   if(!window.indexedDB){rej(new Error('idb'));return;}
   var q=indexedDB.open('cahiers-voice',1);
@@ -1842,7 +1850,7 @@ function showVoice(){
   if(!VNLOADED)vLoad().then(renderVoice);else renderVoice();
 }
 function fmtDur(t){t=Math.max(0,Math.round(t));var m=Math.floor(t/60),s=t%60;return (m<10?'0':'')+m+':'+(s<10?'0':'')+s;}
-function fmtWhen(ts){try{var d=new Date(ts);return d.toLocaleDateString(db.lang==='ar'?'ar':'fr',{day:'numeric',month:'short'})+' · '+d.toLocaleTimeString(db.lang==='ar'?'ar':'fr',{hour:'2-digit',minute:'2-digit'});}catch(e){return '';}}
+function fmtWhen(ts){try{var d=new Date(ts);return d.toLocaleDateString(db.lang,{day:'numeric',month:'short'})+' · '+d.toLocaleTimeString(db.lang,{hour:'2-digit',minute:'2-digit'});}catch(e){return '';}}
 function vBars(id,n){var h=0,i;for(i=0;i<id.length;i++)h=(h*31+id.charCodeAt(i))>>>0;var out='';for(i=0;i<n;i++){h=(Math.imul(h,1103515245)+12345)>>>0;out+='<i style="height:'+(5+((h>>>8)%22))+'px"></i>';}return out;}
 function renderVoice(){
   var l=L(),q=fnorm(vQuery),h='',list=VN.filter(function(n){return !q||norm(n.title+' '+(n.text||'')).indexOf(q)>=0;});
@@ -1850,12 +1858,12 @@ function renderVoice(){
   else if(!list.length)h='<div class="vempty">'+l.vNoRes+'</div>';
   list.forEach(function(n){
     var open=vOpen===n.id,playing=vAud&&vAud.dataset.id===n.id&&!vAud.paused;
-    h+='<div class="vcard" data-vid="'+n.id+'"><div class="vhead"><button class="vplay" data-vplay="'+n.id+'" aria-label="play">'+(playing?'<svg class="i" viewBox="0 0 24 24"><rect x="6" y="5" width="4" height="14" rx="1"/><rect x="14" y="5" width="4" height="14" rx="1"/></svg>':'<svg class="i" viewBox="0 0 24 24"><path d="M7 4.5v15l13-7.5z"/></svg>')+'</button>'
+    h+='<div class="vcard" data-vid="'+n.id+'"><div class="vhead"><button class="vplay" data-vplay="'+n.id+'" aria-label="play"'+(n.blob?'':' disabled')+'>'+(playing?'<svg class="i" viewBox="0 0 24 24"><rect x="6" y="5" width="4" height="14" rx="1"/><rect x="14" y="5" width="4" height="14" rx="1"/></svg>':'<svg class="i" viewBox="0 0 24 24"><path d="M7 4.5v15l13-7.5z"/></svg>')+'</button>'
      +'<div class="vmeta" data-vtog="'+n.id+'"><b>'+esc(n.title)+'</b><small>'+fmtWhen(n.created)+'</small></div><span class="vdur">'+fmtDur(n.dur)+'</span></div>'
      +'<div class="vbars" data-vbars="'+n.id+'">'+vBars(n.id,34)+'</div>';
     if(open){
       h+=(n.text?'<div class="vtxt" dir="auto">'+esc(n.text)+'</div>':'<div class="vtxt empty">'+l.vNoTxt+'</div>')
-       +'<div class="vact"><button class="pri" data-vcopy="'+n.id+'"'+(n.text?'':' disabled')+'>'+svg('copy')+l.vCopy+'</button><button data-vshare="'+n.id+'">'+svg('share')+l.vShare+'</button><button data-vsave="'+n.id+'">'+svg('dl')+l.vSave+'</button><button data-vren="'+n.id+'">'+svg('pen')+l.vRen+'</button><button class="'+(vArm===n.id?'warn':'')+'" data-vdel="'+n.id+'">'+svg('trash')+(vArm===n.id?l.vSure:l.vDel)+'</button></div>';
+       +'<div class="vact"><button class="pri" data-vcopy="'+n.id+'"'+(n.text?'':' disabled')+'>'+svg('copy')+l.vCopy+'</button><button data-vshare="'+n.id+'">'+svg('share')+l.vShare+'</button><button data-vsave="'+n.id+'"'+(n.blob?'':' disabled')+'>'+svg('dl')+l.vSave+'</button><button data-vren="'+n.id+'">'+svg('pen')+l.vRen+'</button><button class="'+(vArm===n.id?'warn':'')+'" data-vdel="'+n.id+'">'+svg('trash')+(vArm===n.id?l.vSure:l.vDel)+'</button></div>';
     }
     h+='</div>';
   });
@@ -1897,8 +1905,8 @@ function openShare(id){
   var n=vFind(id);if(!n)return;var l=L();
   openSheet('<div class="ph"><b>'+l.vShT+'</b><button class="ib fill" data-close aria-label="close">'+svg('x')+'</button></div>'
    +'<button class="wide pri" data-vsh="txt:'+id+'"'+(n.text?'':' disabled')+'>'+svg('share')+l.vShTxt+'</button>'
-   +'<button class="wide" data-vsh="aud:'+id+'">'+svg('share')+l.vShAud+'</button>'
-   +'<button class="wide" data-vsh="sav:'+id+'">'+svg('dl')+l.vSv+'</button>');
+   +'<button class="wide" data-vsh="aud:'+id+'"'+(n.blob?'':' disabled')+'>'+svg('share')+l.vShAud+'</button>'
+   +'<button class="wide" data-vsh="sav:'+id+'"'+(n.blob?'':' disabled')+'>'+svg('dl')+l.vSv+'</button>');
 }
 function openRename(id){
   var n=vFind(id);if(!n)return;var l=L();
@@ -1920,7 +1928,7 @@ voiceV.addEventListener('click',function(e){
   if(d.vdel){
     if(vArm!==d.vdel){vArm=d.vdel;renderVoice();clearTimeout(vArm.t);setTimeout(function(){if(vArm===d.vdel){vArm=null;renderVoice();}},3500);return;}
     if(vAud&&vAud.dataset.id===d.vdel)vStopAudio();
-    vArm=null;vRm(d.vdel).then(function(){VN=VN.filter(function(x){return x.id!==d.vdel;});if(vOpen===d.vdel)vOpen=null;renderVoice();});
+    vArm=null;vsDel(d.vdel);vRm(d.vdel).then(function(){VN=VN.filter(function(x){return x.id!==d.vdel;});if(vOpen===d.vdel)vOpen=null;renderVoice();});
   }
 });
 $('home').addEventListener('click',function(e){var b=e.target.closest('[data-nav]');if(b&&b.dataset.nav==='voice')showVoice();});
@@ -1928,7 +1936,7 @@ $('vq').addEventListener('input',function(){vQuery=this.value;renderVoice();});
 sheet.addEventListener('click',function(e){
   var b=e.target.closest('button');if(!b)return;var d=b.dataset;
   if(d.vsh){var p=d.vsh.split(':'),n=vFind(p[1]);if(!n)return;closeSheet();if(p[0]==='txt')vShareText(n);else if(p[0]==='aud')vShareAudio(n);else vDownload(n);return;}
-  if(d.vrok){var n3=vFind(d.vrok);if(!n3)return;n3.title=($('vrT').value||'').trim()||L().vDefT;n3.text=($('vrX').value||'').trim();vPut(n3).then(function(){closeSheet();renderVoice();});return;}
+  if(d.vrok){var n3=vFind(d.vrok);if(!n3)return;n3.title=($('vrT').value||'').trim()||L().vDefT;n3.text=($('vrX').value||'').trim();n3.u=Date.now();vPut(n3).then(function(){closeSheet();renderVoice();vsPush();});return;}
 });
 /* ----- recorder ----- */
 function srClass(){return window.SpeechRecognition||window.webkitSpeechRecognition||null;}
@@ -1947,6 +1955,7 @@ function recHTML(){
    +'<div class="rb"><button data-vpause aria-label="pause" id="rPa"><svg viewBox="0 0 24 24"><rect x="6" y="5" width="4" height="14" rx="1"/><rect x="14" y="5" width="4" height="14" rx="1"/></svg></button><button class="big" data-vstop aria-label="stop"><svg viewBox="0 0 24 24"><rect x="5" y="5" width="14" height="14" rx="3"/></svg></button></div></div>'
    +'<label class="fl" for="rT">'+l.vTitleL+'</label><input id="rT" class="inp" type="text" value="'+esc(VR.title||'')+'" autocomplete="off">'
    +'<div class="sw2"><div class="t"><b>'+l.vTrL+'</b><small>'+(sr?l.vTrH:l.vTrNo)+'</small></div><button class="tog'+(VR.want&&sr?' on':'')+'" data-vtr aria-label="transcribe"'+(sr?'':' disabled')+'></button></div>'
+   +(ANDROID&&sr?'<p class="note" style="margin:6px 0 0">'+l.vAnd+'</p>':'')
    +'<div class="seg" style="margin-top:12px">'+[['ar',l.nlAr],['fr',l.nlFr],['en',l.nlEn]].map(function(o){return '<button class="'+(VR.lang===o[0]?'on':'')+'" data-vlg="'+o[0]+'">'+o[1]+'</button>';}).join('')+'</div>'
    +'<div class="fl">'+l.vLive+'</div><div class="rlive" id="rLive" dir="auto"></div>'
    +'<button class="wide pri" data-vsaveRec id="rSave" disabled>'+l.vSaveBtn+'</button>';
@@ -1966,13 +1975,19 @@ function recWave(){
 function srStart(){
   var SR=srClass();if(!SR||!VR.want||VR.srOn||VR.fail)return;
   try{
-    var r=new SR();r.lang=VR.lang==='ar'?'ar-SA':(VR.lang==='en'?'en-US':'fr-FR');r.continuous=true;r.interimResults=true;
+    var r=new SR();r.lang=VR.lang==='ar'?'ar-SA':(VR.lang==='en'?'en-US':'fr-FR');r.continuous=!ANDROID;r.interimResults=true;
     r.onresult=function(ev){
       var fin='',tmp='';
       for(var i=ev.resultIndex;i<ev.results.length;i++){var t=ev.results[i][0].transcript;if(ev.results[i].isFinal)fin+=t;else tmp+=t;}
       if(fin)VR.text=(VR.text+' '+fin).trim();VR.interim=tmp;recUi();
     };
-    r.onerror=function(ev){if(ev.error==='not-allowed'||ev.error==='service-not-allowed'||ev.error==='audio-capture'||ev.error==='language-not-supported'){VR.fail=true;toast(L().vTrFail);}};
+    r.onerror=function(ev){
+      var er=ev.error;
+      if(er==='not-allowed'||er==='service-not-allowed'||er==='audio-capture'||er==='language-not-supported'||er==='network'){
+        VR.fail=true;toast(L().vTrFail);
+        if(VR.dictation&&!VR.stopped){VR.want=false;setTimeout(function(){recCleanup();closeSheet();openRecorder();},900);}
+      }
+    };
     r.onend=function(){VR.srOn=false;if(VR.on&&!VR.paused&&!VR.stopped&&VR.want&&!VR.fail)setTimeout(srStart,150);};
     VR.sr=r;VR.srOn=true;r.start();
   }catch(e){VR.srOn=false;VR.fail=true;}
@@ -1983,17 +1998,24 @@ function recCleanup(){
   if(VR.mr&&VR.mr.state!=='inactive'){try{VR.mr.onstop=null;VR.mr.stop();}catch(e){}}
   if(VR.stream){VR.stream.getTracks().forEach(function(t){t.stop();});}
   if(VR.ac){try{VR.ac.close();}catch(e){}}
-  VR.on=false;VR.stopped=false;VR.stream=null;VR.mr=null;VR.ac=null;VR.an=null;
+  VR.on=false;VR.dictation=false;VR.stopped=false;VR.stream=null;VR.mr=null;VR.ac=null;VR.an=null;
 }
 function openRecorder(){
   var l=L();
   if(!navigator.mediaDevices||!navigator.mediaDevices.getUserMedia||!window.MediaRecorder){toast(l.vNoMic);return;}
   vStopAudio();
-  VR.text='';VR.interim='';VR.chunks=[];VR.acc=0;VR.paused=false;VR.stopped=false;VR.blob=null;VR.fail=false;VR.lang=db.lang==='fr'?'fr':'ar';try{var cn=curNb();if(cn&&cn.lang)VR.lang=cn.lang;}catch(e){}
-  VR.title=l.vDefT+' — '+new Date().toLocaleDateString(db.lang==='ar'?'ar':'fr',{day:'numeric',month:'short'});
+  VR.text='';VR.interim='';VR.chunks=[];VR.acc=0;VR.paused=false;VR.stopped=false;VR.blob=null;VR.fail=false;VR.dictation=false;VR.lang=db.lang;try{var cn=curNb();if(cn&&cn.lang)VR.lang=cn.lang;}catch(e){}
+  VR.title=l.vDefT+' — '+new Date().toLocaleDateString(db.lang,{day:'numeric',month:'short'});
+  if(ANDROID&&VR.want&&srClass()){
+    /* Android phones give the microphone to one app part at a time: text-only dictation */
+    VR.dictation=true;VR.mime='';VR.on=true;VR.t0=Date.now();
+    openSheet(recHTML(),true);
+    VR.tick=setInterval(recUi,250);
+    srStart();return;
+  }
   navigator.mediaDevices.getUserMedia({audio:true}).then(function(stream){
     VR.stream=stream;VR.mime=vPickMime();
-    var mr;try{mr=VR.mime?new MediaRecorder(stream,{mimeType:VR.mime}):new MediaRecorder(stream);}catch(e){mr=new MediaRecorder(stream);}
+    var mr;try{mr=VR.mime?new MediaRecorder(stream,{mimeType:VR.mime,audioBitsPerSecond:32000}):new MediaRecorder(stream,{audioBitsPerSecond:32000});}catch(e){try{mr=new MediaRecorder(stream);}catch(e2){toast(l.vNoMic);return;}}
     VR.mr=mr;VR.mime=mr.mimeType||VR.mime||'audio/webm';
     mr.ondataavailable=function(ev){if(ev.data&&ev.data.size)VR.chunks.push(ev.data);};
     mr.onstop=function(){VR.blob=new Blob(VR.chunks,{type:VR.mime});VR.dur=recTime();var b=$('rSave');if(b)b.disabled=false;};
@@ -2007,16 +2029,17 @@ function openRecorder(){
 function recStop(){
   if(!VR.on||VR.stopped)return;
   VR.acc=recTime()*1000;VR.stopped=true;clearInterval(VR.anT);srStop();
+  if(VR.dictation){VR.blob=null;VR.dur=recTime();var sb=$('rSave');if(sb)sb.disabled=false;}
   try{VR.mr.stop();}catch(e){}
   if(VR.stream)VR.stream.getTracks().forEach(function(t){t.stop();});
   var st=$('rSt');if(st)st.textContent=L().vReady;recUi();
   var pa=$('rPa');if(pa)pa.disabled=true;
 }
 function recSave(){
-  if(!VR.stopped||!VR.blob)return;
+  if(!VR.stopped||(!VR.blob&&!VR.dictation))return;
   var tt=($('rT').value||'').trim()||L().vDefT,tx=(VR.text+' '+VR.interim).trim();
-  var rec={id:uid()+uid(),title:tt,created:Date.now(),dur:VR.dur||recTime(),mime:VR.mime,blob:VR.blob,text:tx,lang:VR.lang};
-  vPut(rec).then(function(){VN.unshift(rec);vOpen=rec.id;recCleanup();closeSheet();renderVoice();})
+  var rec={id:(uid()+uid()+uid()).slice(0,14),title:tt,created:Date.now(),dur:VR.dur||recTime(),mime:VR.mime,blob:VR.blob||null,text:tx,lang:VR.lang};rec.u=rec.created;
+  vPut(rec).then(function(){VN.unshift(rec);vOpen=rec.id;recCleanup();closeSheet();renderVoice();vsPush();})
    .catch(function(){toast(L().noSpace);});
 }
 function recAbort(){recCleanup();closeSheet();}
@@ -2032,7 +2055,9 @@ sheet.addEventListener('click',function(e){
     else{VR.t0=Date.now();VR.paused=false;try{VR.mr.resume();}catch(x){}srStart();}
     var st=$('rSt');if(st)st.textContent=VR.paused?L().vPaused:L().vRecNow;return;
   }
-  if(b.hasAttribute('data-vtr')){VR.want=!VR.want;b.classList.toggle('on',VR.want);if(VR.want&&!VR.stopped&&!VR.paused){VR.fail=false;srStart();}else srStop();return;}
+  if(b.hasAttribute('data-vtr')){
+    if(ANDROID&&srClass()&&!VR.stopped){VR.want=!VR.want;var lg=VR.lang,ti=($('rT')||{}).value;recCleanup();closeSheet();openRecorder();VR.lang=lg;if(ti)VR.title=ti;return;}
+    VR.want=!VR.want;b.classList.toggle('on',VR.want);if(VR.want&&!VR.stopped&&!VR.paused){VR.fail=false;srStart();}else srStop();return;}
   if(d.vlg){VR.lang=d.vlg;var a=sheet.querySelectorAll('[data-vlg]');for(var i=0;i<a.length;i++)a[i].classList.toggle('on',a[i].dataset.vlg===VR.lang);if(VR.srOn){srStop();setTimeout(srStart,200);}return;}
 });
 /* a recording is never lost by tapping the dim area */
@@ -2075,6 +2100,21 @@ function insertImg(url,w,h){
   document.execCommand('insertHTML',false,'<p dir="auto"><img class="pimg" src="'+url+'" width="'+d[0]+'" height="'+d[1]+'" data-nw="'+w+'" data-nh="'+h+'" data-pct="70" draggable="false"></p><p><br></p>');
   onEdit();
 }
+function imgReplace(im,mut,del){
+  /* done through the editor's own command so the undo/redo arrows can reverse it */
+  var s=window.getSelection(),r=document.createRange(),had=document.activeElement===ed,idx=[].indexOf.call(ed.querySelectorAll('img.pimg'),im);
+  try{
+    if(!had){ed.setAttribute('inputmode','none');ed.focus({preventScroll:true});}
+    r.selectNode(im);s.removeAllRanges();s.addRange(r);
+    if(del){document.execCommand('delete');}
+    else{var c=im.cloneNode(true);mut(c);document.execCommand('insertHTML',false,c.outerHTML);}
+    if(!had){ed.blur();ed.removeAttribute('inputmode');}
+  }catch(e){
+    if(del){im.remove();}else{mut(im);}
+  }
+  if(!del)imgIdx=idx;
+  if(del&&ed.querySelector('img.pimg')==null){}
+}
 function curImg(){return ed.querySelectorAll('img.pimg')[imgIdx]||null;}
 var isBox=null,isArm=false;
 function selBox(){
@@ -2112,6 +2152,11 @@ paper.addEventListener('pointerdown',function(e){
   };
   var up=function(){
     h.removeEventListener('pointermove',mv);h.removeEventListener('pointerup',up);h.removeEventListener('pointercancel',up);
+    var W1=im.getAttribute('width'),H1=im.getAttribute('height');
+    if(+W1!==Math.round(w0)||+H1!==Math.round(h0)){
+      im.setAttribute('width',Math.round(w0));im.setAttribute('height',Math.round(h0));
+      imgReplace(im,function(c){c.setAttribute('width',W1);c.setAttribute('height',H1);},false);
+    }
     onEdit();selPos();
   };
   h.addEventListener('pointermove',mv);h.addEventListener('pointerup',up);h.addEventListener('pointercancel',up);
@@ -2120,8 +2165,7 @@ paper.addEventListener('click',function(e){
   var t=e.target.closest&&e.target.closest('.itrash');if(!t)return;
   var im=curImg();if(!im){selHide();return;}
   if(!isArm){isArm=true;t.classList.add('warn');return;}
-  var p=im.parentNode;im.remove();
-  if(p&&p!==ed&&!p.textContent&&!p.querySelector('img'))p.innerHTML='<br>';
+  imgReplace(im,null,true);
   selHide();onEdit();
 });
 
@@ -2251,7 +2295,91 @@ function refreshAfterSync(touched){
   renderChips();$('nbTitle').textContent=nm(n.name)||L().untitled;applyFs();
   if(touched[pgId]){loadPage();scrollEl.scrollTop=st;}
 }
+/* ---------- voice notes sync (text + audio chunks through the same Firestore) ---------- */
+var VS={chunks:{},busy:false,again:false},VCH=450000,VMAX=8*1024*1024;
+function isVdoc(d){return d.t==='vn'||d.t==='va'||String(d.id).length>=10||String(d.id).indexOf('~')>0;}
+function vsKey(){return 'kerima-vsync-'+SY.user.uid;}
+function vsLoad(){try{var o=JSON.parse(localStorage.getItem(vsKey()));if(o&&o.m)return o;}catch(e){}return {m:{},d:{},a:{}};}
+function vsUpd(f){var o=vsLoad();f(o);vsSave(o);}
+function vsSave(o){try{localStorage.setItem(vsKey(),JSON.stringify(o));}catch(e){}}
+function b64(blob){return new Promise(function(res,rej){var f=new FileReader();f.onload=function(){var x=String(f.result);res(x.slice(x.indexOf(',')+1));};f.onerror=function(){rej(f.error);};f.readAsDataURL(blob);});}
+function vsGone(id){return !vFind(id);}
+function vsDel(id){
+  if(!SY.user)return;
+  var n=vFind(id),u=Date.now(),ch=n&&n.blob?Math.ceil(n.blob.size/VCH):0;
+  vsUpd(function(st){st.d[id]={u:u,ch:ch};delete st.m[id];delete st.a[id];});
+  db.tomb[id]=u;save();vsPush();
+}
+function vsPush(){
+  if(!SY.user||!SY.R||!SY.ready)return;
+  if(VS.busy){VS.again=true;return;}
+  VS.busy=true;
+  (VNLOADED?Promise.resolve():vLoad()).then(function(){
+    var uid=SY.user.uid,st=vsLoad(),chain=Promise.resolve();
+    Object.keys(st.d).forEach(function(id){
+      var info=st.d[id];
+      chain=chain.then(function(){var arr=[{id:id,del:true,u:info.u}];for(var i=0;i<info.ch;i++)arr.push({id:id+'~'+i,del:true,u:info.u});return SY.R.push(arr,uid);})
+        .then(function(){vsUpd(function(s2){delete s2.d[id];});}).catch(function(){});
+    });
+    VN.slice().forEach(function(n){
+      var u=n.u||n.created;
+      if((st.m[n.id]||0)>=u||st.d[n.id])return;
+      chain=chain.then(function(){
+        var big=n.blob&&n.blob.size>VMAX,ch=(n.blob&&!big)?Math.ceil(n.blob.size/VCH):0,p=Promise.resolve();
+        if(ch&&!st.a[n.id]){
+          for(var i=0;i<ch;i++)(function(i){
+            p=p.then(function(){return b64(n.blob.slice(i*VCH,(i+1)*VCH));}).then(function(x){return SY.R.push([{id:n.id+'~'+i,t:'va',nb:n.id,u:u,d:x}],uid);});
+          })(i);
+        }
+        return p.then(function(){
+          return SY.R.push([{id:n.id,t:'vn',nb:'',u:u,d:JSON.stringify({title:n.title,text:n.text||'',created:n.created,dur:n.dur,mime:n.mime||'',lang:n.lang||'',ch:ch})}],uid);
+        }).then(function(){vsUpd(function(s2){if((s2.d[n.id]||0)||vsGone(n.id))return;s2.m[n.id]=u;if(ch)s2.a[n.id]=1;});});
+      }).catch(function(){});
+    });
+    return chain;
+  }).then(function(){VS.busy=false;if(VS.again){VS.again=false;vsPush();}},function(){VS.busy=false;});
+}
+function vsApply(docs){
+  if(!docs.length||!SY.user)return;
+  (VNLOADED?Promise.resolve():vLoad()).then(function(){
+    var st=vsLoad(),changed=false,jobs=[];
+    docs.forEach(function(d){
+      var id=d.id;
+      if(d.t==='va'&&!d.del){var lo=vFind(d.nb);if(!(lo&&lo.blob)){(VS.chunks[d.nb]=VS.chunks[d.nb]||{})[id]=d.d;}return;}
+      if(String(id).indexOf('~')>0)return;
+      var loc=vFind(id);
+      if(d.del){
+        if((db.tomb[id]||0)<d.u)db.tomb[id]=d.u;
+        if(loc&&(loc.u||loc.created)<d.u){VN=VN.filter(function(x){return x.id!==id;});jobs.push(vRm(id));changed=true;}
+        return;
+      }
+      if((db.tomb[id]||0)>=d.u)return;
+      if(loc&&(loc.u||loc.created)>=d.u)return;
+      var m;try{m=JSON.parse(d.d);}catch(e){return;}
+      var rec=loc||{id:id,blob:null};
+      rec.title=m.title;rec.text=m.text;rec.created=m.created;rec.dur=m.dur;rec.mime=m.mime;rec.lang=m.lang;rec.u=d.u;rec.ch=m.ch;
+      if(!loc)VN.push(rec);
+      st.m[id]=d.u;jobs.push(vPut(rec));changed=true;
+    });
+    VN.forEach(function(rec){
+      var c=VS.chunks[rec.id];
+      if(rec.blob||!rec.ch||!c)return;
+      var parts=[],ok=true;
+      for(var i=0;i<rec.ch;i++){var x=c[rec.id+'~'+i];if(x==null){ok=false;break;}
+        try{var bin=atob(x),a=new Uint8Array(bin.length);for(var k=0;k<bin.length;k++)a[k]=bin.charCodeAt(k);parts.push(a);}catch(e){ok=false;break;}}
+      if(!ok)return;
+      rec.blob=new Blob(parts,{type:rec.mime||'audio/webm'});delete VS.chunks[rec.id];st.a[rec.id]=1;jobs.push(vPut(rec));changed=true;
+    });
+    return Promise.all(jobs).then(function(){
+      if(!changed)return;
+      VN.sort(function(a,b){return b.created-a.created;});vsUpd(function(s2){for(var k in st.m)if((s2.m[k]||0)<st.m[k])s2.m[k]=st.m[k];for(var j in st.a)s2.a[j]=1;});save();
+      if(!voiceV.hidden)renderVoice();
+    });
+  });
+}
+function vClearAll(){VN=[];VNLOADED=true;return vAll().then(function(a){return Promise.all(a.map(function(r){return vRm(r.id);}));}).catch(function(){});}
 function onSnap(docs,fromCache){
+  var vd=docs.filter(isVdoc);docs=docs.filter(function(d){return !isVdoc(d);});
   if(!SY.ready){
     var live=docs.filter(function(d){return !d.del;}).length;
     if(fromCache&&!live)return;
@@ -2259,6 +2387,7 @@ function onSnap(docs,fromCache){
     SY.ready=true;
   }
   applyRemote(docs);
+  vsApply(vd);setTimeout(vsPush,1500);
   clearTimeout(SY.diffT);SY.diffT=setTimeout(syncDiff,300);
   accRender();
 }
@@ -2268,6 +2397,7 @@ function onUser(u){
   if(!u){SY.user=null;SY.base={};accRender();updAccBtn();return;}
   if(db.owner&&db.owner!==u.uid){db.nbs=[];db.tomb={};db.seedSig='';if(nbId)showHome();}
   db.owner=u.uid;SY.user=u;
+  try{var vo=localStorage.getItem('kerima-vowner');if(vo&&vo!==u.uid)vClearAll();localStorage.setItem('kerima-vowner',u.uid);}catch(e){}
   SY.base=loadBase()||{};
   persist();updAccBtn();accRender();
   SY.unsub=SY.R.subscribe(u.uid,onSnap);
@@ -2290,7 +2420,7 @@ function accStatus(){
   if(!SY.ready||SY.pend>0)return ['busy',l.syBusy];
   return ['ok',l.syOk];
 }
-function accHTML(msg){return accHTML0(msg)+'<div class="note" dir="ltr" style="text-align:center;opacity:.6">v18</div>';}
+function accHTML(msg){return accHTML0(msg)+'<div class="note" dir="ltr" style="text-align:center;opacity:.6">v20</div>';}
 function accHTML0(msg){
   var l=L(),h='<div class="ph"><b>'+l.acTitle+'</b><button class="ib fill" data-close aria-label="close">'+svg('x')+'</button></div><div id="acBox">';
   if(!SY.R){return h+'<p class="note">'+(window.claude?l.acArt:l.acNone)+'</p></div>';}
