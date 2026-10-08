@@ -1,0 +1,18 @@
+{
+  "name": "دفاتري - Mes Cahiers",
+  "short_name": "دفاتري",
+  "description": "دفاتر المدرسة: كتابة وتظليل ورسم ومسح ضوئي",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "lang": "ar",
+  "dir": "rtl",
+  "background_color": "#F3F4FA",
+  "theme_color": "#161B33",
+  "icons": [
+    { "src": "icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "icon-512-maskable.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}
