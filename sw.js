@@ -1,5 +1,5 @@
 /* دفاتري - service worker. Bump CACHE on every release. */
-const CACHE = "cahiers-v12";
+const CACHE = "cahiers-v13";
 const SHELL = [
   "./",
   "./index.html",
