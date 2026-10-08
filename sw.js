@@ -1,5 +1,5 @@
 /* دفاتري - service worker. Bump CACHE on every release. */
-const CACHE = "cahiers-v15";
+const CACHE = "cahiers-v16";
 const SHELL = [
   "./",
   "./index.html",
@@ -33,7 +33,7 @@ self.addEventListener("fetch", function (e) {
   if (u.origin === location.origin) {
     /* Own files: network first so updates show immediately; cache is the offline fallback. */
     e.respondWith(
-      fetch(r).then(function (res) {
+      fetch(r, {cache:'no-store'}).then(function (res) {
         if (res && res.status === 200) { var cp = res.clone(); caches.open(CACHE).then(function (c) { c.put(r, cp); }); }
         return res;
       }).catch(function () {
