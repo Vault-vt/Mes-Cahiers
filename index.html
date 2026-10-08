@@ -1422,7 +1422,7 @@ function printDoc(list,n,o){
     +'<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">'
     +'<style>'+PRINT_CSS+'</style></head><body class="'+(o.lines?'':'nolines ')+(o.head?'':'nohead')+'">'
     +'<div class="top"><button class="x" onclick="window.close()" aria-label="'+esc(l.pdClose)+'">✕</button><button class="go" onclick="window.print()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><path d="M6 9V2h12v7M6 18H4a2 2 0 01-2-2v-5a2 2 0 012-2h16a2 2 0 012 2v5a2 2 0 01-2 2h-2M6 14h12v8H6z"/></svg>'+esc(l.pdBtn)+'</button></div>'
-    +'<div class="hint">'+esc(l.pdHint)+'</div><div class="wrap">'+body+'</div></body></html>';
+    +'<div class="hint">'+esc(l.pdHint)+' <span dir="ltr">(v16)</span></div><div class="wrap">'+body+'</div></body></html>';
 }
 function exportPdf(list,n,o){
   if(window.claude){toast(L().pdfNote);return;}
@@ -1742,7 +1742,8 @@ function accStatus(){
   if(!SY.ready||SY.pend>0)return ['busy',l.syBusy];
   return ['ok',l.syOk];
 }
-function accHTML(msg){
+function accHTML(msg){return accHTML0(msg)+'<div class="note" dir="ltr" style="text-align:center;opacity:.6">v16</div>';}
+function accHTML0(msg){
   var l=L(),h='<div class="ph"><b>'+l.acTitle+'</b><button class="ib fill" data-close aria-label="close">'+svg('x')+'</button></div><div id="acBox">';
   if(!SY.R){return h+'<p class="note">'+(window.claude?l.acArt:l.acNone)+'</p></div>';}
   if(SY.user){
