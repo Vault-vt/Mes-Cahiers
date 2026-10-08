@@ -238,6 +238,11 @@ div.cover{cursor:pointer;-webkit-tap-highlight-color:transparent}
 .pgscroll{flex:1;min-height:0;overflow-y:auto;align-content:start;padding-top:12px}
 .th{content-visibility:auto;contain-intrinsic-size:auto calc(var(--tw)*1.4142 + 26px)}
 .pgh .wide{margin:0 0 10px}
+.pgtb{margin-bottom:10px}
+.tgrid:not(.selmode) .chk{display:none}
+.tgrid.selmode .th.sel .thp{box-shadow:0 0 0 3px var(--warn),var(--shadow-s)}
+.tgrid.selmode .th:not(.sel) .thp{opacity:.6}
+.tgrid.selmode .th.sel .chk{background:var(--warn);color:#fff}
 /* print preview */
 #prv{z-index:40;background:var(--bg)}
 .pvtools{padding:0 16px 8px;display:flex;flex-direction:column;gap:8px;flex:none}
@@ -375,7 +380,7 @@ var P={
 function svg(n){return '<svg class="i" viewBox="0 0 24 24">'+P[n]+'</svg>';}
 
 var T={
-  ar:{sNb:'ابحث عن دفتر…',sNbT:'البحث عن دفتر',pgQ:'ابحث في الصفحات (رقم أو كلمة)…',newPg:'صفحة جديدة',mOpen:'فتح الدفتر',mPrint:'طباعة / PDF',mSet:'إعدادات الدفتر',prvT:'معاينة الطباعة',prvAll:'تحديد الكل',prvNone:'إلغاء التحديد',prvR:'اكتب أرقام الصفحات: 1-3 5 8',prvPrint:function(n){return 'طباعة ('+n+')';},prvCnt:function(n,t){return n+' من '+t+' صفحة محددة';},prvLines:'الأسطر والمربعات',prvHead:'اسم الدفتر في الأعلى',prvNo:'اختر صفحة واحدة على الأقل',tImg:'صورة',imgT:'إضافة صورة',imgCam:'التقاط صورة',imgGal:'اختيار من المعرض',imgSz:'حجم الصورة',imgDel:'حذف الصورة',imgBig:'هذه الصفحة ممتلئة بالصور، احذف صورة أو أضف صفحة جديدة',imgErr:'تعذّر فتح الصورة',noSpace:'مساحة التخزين ممتلئة — احذف بعض الصور',imgNote:'تُضغط الصورة تلقائياً لتبقى الدفاتر خفيفة.',pgFull:'امتلأت الصفحة — فُتحت صفحة جديدة',nbLangL:'لغة هذا الدفتر',nlAr:'العربية',nlFr:'Français',pdfP:'طباعة هذه الصفحة',pdfA:'طباعة كل الدفتر',cvCustom:'لون آخر للغلاف',acTitle:'حسابي',acIntro:'سجّل الدخول بالبريد الإلكتروني لتجد دفاترك على كل أجهزتك.',acEmail:'البريد الإلكتروني',acPass:'كلمة المرور',acIn:'تسجيل الدخول',acUp:'إنشاء حساب جديد',acForgot:'نسيت كلمة المرور؟',acOut:'تسجيل الخروج',acHow:'تُحفظ دفاترك على هذا الجهاز وتتزامن تلقائياً عند توفر الإنترنت، ويمكنك الكتابة بدونه.',syOk:'متزامن',syBusy:'جارٍ المزامنة…',syOff:'بدون إنترنت — سيتم الحفظ لاحقاً',acBad:'البريد أو كلمة المرور غير صحيحة',acExists:'هذا البريد مسجّل من قبل، سجّل الدخول',acWeak:'كلمة المرور ضعيفة (6 أحرف على الأقل)',acMail:'اكتب بريداً إلكترونياً صحيحاً',acNet:'لا يوجد اتصال بالإنترنت',acMany:'محاولات كثيرة، انتظر قليلاً',acConf:'الحساب بالبريد غير مفعّل في Firebase',acNoPw:'اكتب كلمة المرور',acSent:'أرسلنا رابط إعادة التعيين إلى بريدك',acWelcome:'مرحباً! تتم المزامنة الآن',acBye:'تم تسجيل الخروج',acGone:'تم حذف هذا الدفتر من جهاز آخر',acBig:'صفحة كبيرة جداً لا يمكن مزامنتها',acNone:'المزامنة غير مفعّلة بعد: أضف إعدادات Firebase في أعلى الملف index.html',acArt:'الحساب والمزامنة يعملان من الموقع المنشور وليس من هذه المعاينة',tools:'الأدوات',hideT:'إخفاء الأدوات',app:'دفاتري',myNbs:'دفاتري',sub:'اختر دفتراً وابدأ كتابة دروسك',search:'ابحث بكلمة في كل الدفاتر…',newNb:'دفتر جديد',
+  ar:{prvCover:'غلاف الدفتر وفهرس الصفحات',prvHead:'العنوان ورقم الصفحة',pdOpen:'تعذّر فتح نافذة الطباعة — اسمح بالنوافذ المنبثقة',pdBtn:'طباعة / حفظ PDF',pdClose:'إغلاق',pdHint:'اضغط «طباعة» ثم اختر «حفظ كـ PDF» أو الطابعة.',cvPages:function(n){return n===1?'صفحة واحدة':n===2?'صفحتان':n<=10?n+' صفحات':n+' صفحة';},tocT:'الفهرس',tocUn:'بدون عنوان',pSel:'تحديد',pSelAll:'الكل',pDone:'تم',pDelN:function(n){return 'حذف ('+n+')';},pDelSure:function(n){return 'تأكيد حذف '+n+'؟';},pSelHint:'اضغط على الصفحات لتحديدها',sNb:'ابحث عن دفتر…',sNbT:'البحث عن دفتر',pgQ:'ابحث في الصفحات (رقم أو كلمة)…',newPg:'صفحة جديدة',mOpen:'فتح الدفتر',mPrint:'طباعة / PDF',mSet:'إعدادات الدفتر',prvT:'معاينة الطباعة',prvAll:'تحديد الكل',prvNone:'إلغاء التحديد',prvR:'اكتب أرقام الصفحات: 1-3 5 8',prvPrint:function(n){return 'طباعة ('+n+')';},prvCnt:function(n,t){return n+' من '+t+' صفحة محددة';},prvLines:'الأسطر والمربعات',prvNo:'اختر صفحة واحدة على الأقل',tImg:'صورة',imgT:'إضافة صورة',imgCam:'التقاط صورة',imgGal:'اختيار من المعرض',imgSz:'حجم الصورة',imgDel:'حذف الصورة',imgBig:'هذه الصفحة ممتلئة بالصور، احذف صورة أو أضف صفحة جديدة',imgErr:'تعذّر فتح الصورة',noSpace:'مساحة التخزين ممتلئة — احذف بعض الصور',imgNote:'تُضغط الصورة تلقائياً لتبقى الدفاتر خفيفة.',pgFull:'امتلأت الصفحة — فُتحت صفحة جديدة',nbLangL:'لغة هذا الدفتر',nlAr:'العربية',nlFr:'Français',pdfP:'طباعة هذه الصفحة',pdfA:'طباعة كل الدفتر',cvCustom:'لون آخر للغلاف',acTitle:'حسابي',acIntro:'سجّل الدخول بالبريد الإلكتروني لتجد دفاترك على كل أجهزتك.',acEmail:'البريد الإلكتروني',acPass:'كلمة المرور',acIn:'تسجيل الدخول',acUp:'إنشاء حساب جديد',acForgot:'نسيت كلمة المرور؟',acOut:'تسجيل الخروج',acHow:'تُحفظ دفاترك على هذا الجهاز وتتزامن تلقائياً عند توفر الإنترنت، ويمكنك الكتابة بدونه.',syOk:'متزامن',syBusy:'جارٍ المزامنة…',syOff:'بدون إنترنت — سيتم الحفظ لاحقاً',acBad:'البريد أو كلمة المرور غير صحيحة',acExists:'هذا البريد مسجّل من قبل، سجّل الدخول',acWeak:'كلمة المرور ضعيفة (6 أحرف على الأقل)',acMail:'اكتب بريداً إلكترونياً صحيحاً',acNet:'لا يوجد اتصال بالإنترنت',acMany:'محاولات كثيرة، انتظر قليلاً',acConf:'الحساب بالبريد غير مفعّل في Firebase',acNoPw:'اكتب كلمة المرور',acSent:'أرسلنا رابط إعادة التعيين إلى بريدك',acWelcome:'مرحباً! تتم المزامنة الآن',acBye:'تم تسجيل الخروج',acGone:'تم حذف هذا الدفتر من جهاز آخر',acBig:'صفحة كبيرة جداً لا يمكن مزامنتها',acNone:'المزامنة غير مفعّلة بعد: أضف إعدادات Firebase في أعلى الملف index.html',acArt:'الحساب والمزامنة يعملان من الموقع المنشور وليس من هذه المعاينة',tools:'الأدوات',hideT:'إخفاء الأدوات',app:'دفاتري',myNbs:'دفاتري',sub:'اختر دفتراً وابدأ كتابة دروسك',search:'ابحث بكلمة في كل الدفاتر…',newNb:'دفتر جديد',
     pagesN:function(n){return n===1?'صفحة واحدة':n===2?'صفحتان':n<=10?n+' صفحات':n+' صفحة';},nbDef:function(n){return 'دفتر '+n;},untitled:'بدون عنوان',pTitle:'عنوان الدرس',ph:'اضغط هنا وابدأ الكتابة…',
     tWrite:'كتابة',tHl:'تظليل',tColor:'لون الخط',tDraw:'رسم',tScan:'مسح ضوئي',scTitle:'مسح ورقة إلى نص',scLang:'لغة الورقة',lAr:'عربي',lFr:'Français',lBoth:'الاثنان',scShot:'التقاط صورة للورقة',scGal:'اختيار صورة من المعرض',scNote:'صوّر الورقة بوضوح وفي ضوء جيد وبدون ظلال. أول مرة يحتاج إنترنت لتحميل ملفات اللغة.',scBusy1:'تحميل ملفات اللغة…',scBusy2:'قراءة النص…',scDone:'راجع النص وصحّحه ثم أضفه إلى الصفحة',scAdd:'أضف النص إلى الصفحة',scErr:'تعذّر المسح. تأكد من الإنترنت وحاول مرة أخرى.',scEmpty:'لم أجد نصاً في الصورة. جرّب صورة أوضح.',scArt:'المسح الضوئي يعمل من الموقع المنشور أو من الملف، وليس من هذه المعاينة',
     hWrite:'اضغط على الورقة واكتب. حدّد نصاً لتنسيقه.',fs:'حجم الخط',more:'كل الألوان',allC:'كل الألوان',custom:'لون مخصص',pagesT:'كل الصفحات',sInNb:'ابحث في هذا الدفتر…',bold:'عريض',under:'تسطير',title:'عنوان',list:'قائمة',normal:'عادي',
@@ -384,7 +389,7 @@ var T={
     set:'إعدادات الدفتر',nbName:'اسم الدفتر',cover:'لون الغلاف',paper:'شكل الورقة',lined:'مسطّر',grid:'مربعات',plain:'أبيض',
     pdf:'تصدير PDF للطباعة',fsL:'حجم الخط في هذا الدفتر',delPage:'حذف هذه الصفحة',delNb:'حذف الدفتر كله',noRes:'لا توجد نتائج',
     pdfNote:'الطباعة بصيغة PDF تعمل من نسخة الملف في المتصفح'},
-  fr:{sNb:'Chercher un cahier…',sNbT:'Chercher un cahier',pgQ:'Chercher une page (numéro ou mot)…',newPg:'Nouvelle page',mOpen:'Ouvrir le cahier',mPrint:'Imprimer / PDF',mSet:'Réglages du cahier',prvT:'Aperçu avant impression',prvAll:'Tout sélectionner',prvNone:'Tout désélectionner',prvR:'Numéros de pages : 1-3 5 8',prvPrint:function(n){return 'Imprimer ('+n+')';},prvCnt:function(n,t){return n+' sur '+t+' page'+(t>1?'s':'')+' sélectionnée'+(n>1?'s':'');},prvLines:'Lignes et carreaux',prvHead:'Nom du cahier en haut',prvNo:'Choisissez au moins une page',tImg:'Image',imgT:'Ajouter une image',imgCam:'Prendre une photo',imgGal:'Choisir dans la galerie',imgSz:"Taille de l'image",imgDel:"Supprimer l'image",imgBig:'Cette page est pleine d\'images : supprimez-en une ou ajoutez une page',imgErr:"Image illisible",noSpace:'Stockage plein — supprimez des images',imgNote:'Les images sont compressées automatiquement pour garder des cahiers légers.',pgFull:'Page pleine : une nouvelle page a été ajoutée',nbLangL:'Langue de ce cahier',nlAr:'العربية',nlFr:'Français',pdfP:'Imprimer cette page',pdfA:'Imprimer tout le cahier',cvCustom:'Autre couleur de couverture',acTitle:'Mon compte',acIntro:'Connectez-vous avec votre e-mail pour retrouver vos cahiers sur tous vos appareils.',acEmail:'E-mail',acPass:'Mot de passe',acIn:'Se connecter',acUp:'Créer un compte',acForgot:'Mot de passe oublié ?',acOut:'Se déconnecter',acHow:'Vos cahiers sont enregistrés sur cet appareil et synchronisés automatiquement dès qu’il y a Internet. Vous pouvez écrire sans connexion.',syOk:'Synchronisé',syBusy:'Synchronisation…',syOff:'Hors ligne — envoi plus tard',acBad:'E-mail ou mot de passe incorrect',acExists:'Cet e-mail a déjà un compte, connectez-vous',acWeak:'Mot de passe trop faible (6 caractères minimum)',acMail:'Saisissez un e-mail valide',acNet:'Pas de connexion Internet',acMany:'Trop d’essais, patientez un peu',acConf:'La connexion par e-mail n’est pas activée dans Firebase',acNoPw:'Saisissez le mot de passe',acSent:'Lien de réinitialisation envoyé à votre e-mail',acWelcome:'Bienvenue ! Synchronisation en cours',acBye:'Déconnecté',acGone:'Ce cahier a été supprimé depuis un autre appareil',acBig:'Page trop volumineuse pour être synchronisée',acNone:'La synchronisation n’est pas encore activée : ajoutez la configuration Firebase en haut de index.html',acArt:'Le compte et la synchronisation fonctionnent depuis le site publié, pas depuis cet aperçu',tools:'Outils',hideT:'Masquer les outils',app:'Mes Cahiers',myNbs:'Mes cahiers',sub:'Choisissez un cahier et écrivez vos leçons',search:'Chercher un mot dans tous les cahiers…',newNb:'Nouveau cahier',
+  fr:{prvCover:'Couverture et sommaire',prvHead:'Titre et numéro de page',pdOpen:"Impossible d'ouvrir la fenêtre d'impression — autorisez les fenêtres",pdBtn:'Imprimer / Enregistrer en PDF',pdClose:'Fermer',pdHint:'Touchez « Imprimer » puis choisissez « Enregistrer en PDF » ou une imprimante.',cvPages:function(n){return n+' page'+(n>1?'s':'');},tocT:'Sommaire',tocUn:'Sans titre',pSel:'Sélectionner',pSelAll:'Tout',pDone:'Terminer',pDelN:function(n){return 'Supprimer ('+n+')';},pDelSure:function(n){return 'Confirmer la suppression de '+n+' ?';},pSelHint:'Touchez les pages à sélectionner',sNb:'Chercher un cahier…',sNbT:'Chercher un cahier',pgQ:'Chercher une page (numéro ou mot)…',newPg:'Nouvelle page',mOpen:'Ouvrir le cahier',mPrint:'Imprimer / PDF',mSet:'Réglages du cahier',prvT:'Aperçu avant impression',prvAll:'Tout sélectionner',prvNone:'Tout désélectionner',prvR:'Numéros de pages : 1-3 5 8',prvPrint:function(n){return 'Imprimer ('+n+')';},prvCnt:function(n,t){return n+' sur '+t+' page'+(t>1?'s':'')+' sélectionnée'+(n>1?'s':'');},prvLines:'Lignes et carreaux',prvNo:'Choisissez au moins une page',tImg:'Image',imgT:'Ajouter une image',imgCam:'Prendre une photo',imgGal:'Choisir dans la galerie',imgSz:"Taille de l'image",imgDel:"Supprimer l'image",imgBig:'Cette page est pleine d\'images : supprimez-en une ou ajoutez une page',imgErr:"Image illisible",noSpace:'Stockage plein — supprimez des images',imgNote:'Les images sont compressées automatiquement pour garder des cahiers légers.',pgFull:'Page pleine : une nouvelle page a été ajoutée',nbLangL:'Langue de ce cahier',nlAr:'العربية',nlFr:'Français',pdfP:'Imprimer cette page',pdfA:'Imprimer tout le cahier',cvCustom:'Autre couleur de couverture',acTitle:'Mon compte',acIntro:'Connectez-vous avec votre e-mail pour retrouver vos cahiers sur tous vos appareils.',acEmail:'E-mail',acPass:'Mot de passe',acIn:'Se connecter',acUp:'Créer un compte',acForgot:'Mot de passe oublié ?',acOut:'Se déconnecter',acHow:'Vos cahiers sont enregistrés sur cet appareil et synchronisés automatiquement dès qu’il y a Internet. Vous pouvez écrire sans connexion.',syOk:'Synchronisé',syBusy:'Synchronisation…',syOff:'Hors ligne — envoi plus tard',acBad:'E-mail ou mot de passe incorrect',acExists:'Cet e-mail a déjà un compte, connectez-vous',acWeak:'Mot de passe trop faible (6 caractères minimum)',acMail:'Saisissez un e-mail valide',acNet:'Pas de connexion Internet',acMany:'Trop d’essais, patientez un peu',acConf:'La connexion par e-mail n’est pas activée dans Firebase',acNoPw:'Saisissez le mot de passe',acSent:'Lien de réinitialisation envoyé à votre e-mail',acWelcome:'Bienvenue ! Synchronisation en cours',acBye:'Déconnecté',acGone:'Ce cahier a été supprimé depuis un autre appareil',acBig:'Page trop volumineuse pour être synchronisée',acNone:'La synchronisation n’est pas encore activée : ajoutez la configuration Firebase en haut de index.html',acArt:'Le compte et la synchronisation fonctionnent depuis le site publié, pas depuis cet aperçu',tools:'Outils',hideT:'Masquer les outils',app:'Mes Cahiers',myNbs:'Mes cahiers',sub:'Choisissez un cahier et écrivez vos leçons',search:'Chercher un mot dans tous les cahiers…',newNb:'Nouveau cahier',
     pagesN:function(n){return n+' page'+(n>1?'s':'');},nbDef:function(n){return 'Cahier '+n;},untitled:'Sans titre',pTitle:'Titre de la leçon',ph:'Touchez ici et commencez à écrire…',
     tWrite:'Écrire',tHl:'Surligner',tColor:'Couleur',tDraw:'Dessin',tScan:'Scanner',scTitle:'Scanner une feuille en texte',scLang:'Langue de la feuille',lAr:'Arabe',lFr:'Français',lBoth:'Les deux',scShot:'Photographier la feuille',scGal:'Choisir une photo de la galerie',scNote:'Photographiez la feuille bien nette, avec une bonne lumière, sans ombre. La première fois, internet est nécessaire pour télécharger les langues.',scBusy1:'Téléchargement des langues…',scBusy2:'Lecture du texte…',scDone:'Relisez et corrigez le texte, puis ajoutez-le à la page',scAdd:'Ajouter le texte à la page',scErr:"Échec du scan. Vérifiez internet et réessayez.",scEmpty:"Aucun texte trouvé. Essayez une photo plus nette.",scArt:"Le scanner fonctionne depuis le site publié ou le fichier, pas depuis cet aperçu",
     hWrite:'Touchez la feuille et écrivez. Sélectionnez un texte pour le mettre en forme.',fs:'Taille du texte',more:'Toutes',allC:'Toutes les couleurs',custom:'Couleur personnalisée',pagesT:'Toutes les pages',sInNb:'Chercher dans ce cahier…',bold:'Gras',under:'Souligné',title:'Titre',list:'Liste',normal:'Normal',
@@ -989,19 +994,49 @@ sheet.addEventListener('change',function(e){if(e.target.id==='cvPick'){var nb=cu
 /* ---------- pages overview ---------- */
 function thumbHTML(p,i,n){
   var fs=fsOf(n),lh=Math.round(fs*1.9),has=p.strokes&&p.strokes.length;
-  return '<div class="th'+(p.id===pgId?' cur':'')+'" data-pg="'+p.id+'"><div class="thp"><div class="thin paper bg-'+(p.bg||'lined')+'" style="--fs:'+fs+'px;--lh:'+lh+'px"><div class="tbody" dir="auto">'+(p.html||'')+'</div>'+(has?'<img class="tdraw" alt="" src="'+strokesURL(p)+'">':'')+'</div></div><span class="tn">'+(i+1)+'</span></div>';
+  return '<div class="th'+(p.id===pgId?' cur':'')+'" data-pg="'+p.id+'"><div class="thp"><i class="chk">'+svg('check')+'</i><div class="thin paper bg-'+(p.bg||'lined')+'" style="--fs:'+fs+'px;--lh:'+lh+'px"><div class="tbody" dir="auto">'+(p.html||'')+'</div>'+(has?'<img class="tdraw" alt="" src="'+strokesURL(p)+'">':'')+'</div></div><span class="tn">'+(i+1)+'</span></div>';
 }
-var pgTxt={};
+var pgTxt={},PS={on:false,sel:{},armed:false};
+function psCount(){var c=0;for(var k in PS.sel)if(PS.sel[k])c++;return c;}
+function pgToolbar(){
+  var l=L(),tb=$('pgtb'),g=$('tgrid');if(!tb)return;
+  if(!PS.on){
+    tb.innerHTML='<div class="pvrow"><button class="wide pri" data-addpg="1" style="flex:1;margin:0">'+svg('plus')+l.newPg+'</button><button class="wide" data-ps="on" style="width:auto;padding:0 18px;margin:0">'+svg('check')+l.pSel+'</button></div>';
+  }else{
+    var c=psCount();
+    tb.innerHTML='<div class="pvrow"><button class="pill" data-ps="all">'+l.pSelAll+'</button><button class="pill" data-ps="done">'+l.pDone+'</button><button class="wide warn" data-ps="del" style="flex:1;margin:0;height:44px"'+(c?'':' disabled')+'>'+svg('trash')+'<span>'+(PS.armed?l.pDelSure(c):l.pDelN(c))+'</span></button></div><div class="note" style="margin:6px 2px 0">'+l.pSelHint+'</div>';
+  }
+  if(g){g.classList.toggle('selmode',PS.on);var a=g.querySelectorAll('.th');for(var i=0;i<a.length;i++)a[i].classList.toggle('sel',!!PS.sel[a[i].dataset.pg]);}
+}
+sheet.addEventListener('click',function(e){
+  var b=e.target.closest('[data-ps]');if(!b)return;
+  var a=b.dataset.ps,n=curNb();if(!n)return;
+  if(a==='on'){PS.on=true;PS.sel={};PS.armed=false;pgToolbar();}
+  else if(a==='done'){PS.on=false;PS.sel={};PS.armed=false;pgToolbar();}
+  else if(a==='all'){var all=psCount()===n.pages.length;PS.sel={};if(!all)n.pages.forEach(function(p){PS.sel[p.id]=true;});PS.armed=false;pgToolbar();}
+  else if(a==='del'){
+    if(!psCount())return;
+    if(!PS.armed){PS.armed=true;pgToolbar();return;}
+    var curIdx=n.pages.indexOf(curPg()),keep=n.pages.filter(function(p){return !PS.sel[p.id];});
+    if(!keep.length)keep=[mk('','','lined')];
+    var wasCur=!!PS.sel[pgId];
+    n.pages=keep;save();
+    if(wasCur){pgId=keep[Math.min(curIdx,keep.length-1)].id;}
+    PS.on=false;PS.sel={};PS.armed=false;
+    renderChips();loadPage();openPages();
+  }
+});
 function openPages(){
   var l=L(),n=curNb(),tw=db.thumb||120;pgTxt={};
   var h='<div class="pgh"><div class="ph"><b>'+l.pagesT+' · <span id="pgCnt">'+n.pages.length+'</span></b><button class="ib fill" data-close aria-label="close">'+svg('x')+'</button></div>'
-   +'<button class="wide pri" data-addpg="1">'+svg('plus')+l.newPg+'</button>'
+   +'<div class="pgtb" id="pgtb"></div>'
    +'<input id="pgq" class="inp" type="search" autocomplete="off" placeholder="'+esc(l.pgQ)+'">'
    +'<div class="srow" style="margin:12px 2px 0"><span style="font-size:12px">A</span><input type="range" id="tSz" min="60" max="300" value="'+tw+'" aria-label="size"><span style="font-size:22px">A</span></div></div>'
    +'<div class="tgrid pgscroll" id="tgrid" style="--tw:'+tw+'px;--sc:'+(tw/440)+'">';
   n.pages.forEach(function(p,i){h+=thumbHTML(p,i,n);});
   h+='</div>';
   openSheet(h,true,'pgs');
+  PS.on=false;PS.sel={};PS.armed=false;pgToolbar();
   var c=sheet.querySelector('.th.cur');if(c&&c.scrollIntoView)c.scrollIntoView({block:'center'});
 }
 sheet.addEventListener('input',function(e){
@@ -1022,7 +1057,10 @@ sheet.addEventListener('input',function(e){
 });
 sheet.addEventListener('click',function(e){
   var t=e.target.closest('[data-pg]');
-  if(t&&t.classList.contains('th')){closeSheet();goPage(t.dataset.pg);return;}
+  if(t&&t.classList.contains('th')){
+    if(PS.on){PS.sel[t.dataset.pg]=!PS.sel[t.dataset.pg];PS.armed=false;pgToolbar();return;}
+    closeSheet();goPage(t.dataset.pg);return;
+  }
   if(e.target.closest('[data-addpg]')){
     var n=curNb(),cur=curPg(),i=n.pages.indexOf(cur),pg=mk('','',cur.bg);n.pages.splice(i+1,0,pg);save();closeSheet();goPage(pg.id);
   }
@@ -1276,23 +1314,74 @@ function printRules(bg,fs,lh){
 function printHtml(html){
   return String(html||'').replace(/<img([^>]*?)\swidth="(\d+)"([^>]*?)\sheight="(\d+)"/g,function(m,a,w,b,hh){return '<img'+a+b+' style="width:calc('+w+'*var(--u));height:calc('+hh+'*var(--u))"';});
 }
-var themeWas=null;
+function shade(hex,pct){
+  var m=/^#?([0-9a-f]{6})$/i.exec(hex||'');if(!m)return hex||'#2F6FED';
+  var v=parseInt(m[1],16),r=v>>16,g=(v>>8)&255,b=v&255,t=pct<0?0:255,k=Math.abs(pct);
+  var f=function(c){return Math.round(c+(t-c)*k);};
+  return '#'+((1<<24)+(f(r)<<16)+(f(g)<<8)+f(b)).toString(16).slice(1);
+}
+var PRINT_CSS=':root{--u:min(calc(92vw/440),calc(92vh/622),2px)}'
+ +'*{box-sizing:border-box;margin:0;padding:0;-webkit-print-color-adjust:exact;print-color-adjust:exact}'
+ +'html{color-scheme:light}body{background:#E4E6F2;color:#161B33;font-family:"Cairo",system-ui,-apple-system,"Segoe UI",Tahoma,sans-serif;padding-bottom:50px}'
+ +'.top{position:sticky;top:0;z-index:5;display:flex;align-items:center;justify-content:space-between;gap:10px;padding:12px 16px;background:rgba(240,241,249,.94);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}'
+ +'.top button{border:0;cursor:pointer;font:inherit}.top .x{width:42px;height:42px;border-radius:50%;background:#fff;font-size:18px;box-shadow:0 4px 14px rgba(22,27,51,.14)}'
+ +'.top .go{height:44px;padding:0 22px;border-radius:22px;background:#161B33;color:#fff;font-weight:800;font-size:15px;display:flex;align-items:center;gap:8px}'
+ +'.hint{text-align:center;font-size:13px;color:#6A7090;padding:4px 16px 0;font-weight:600}'
+ +'.pp{position:relative;width:calc(440*var(--u));height:calc(622*var(--u));margin:14px auto;background:#fff;box-shadow:0 10px 30px rgba(22,27,51,.16);overflow:hidden;break-after:page;page-break-after:always}'
+ +'.pp:last-child{break-after:auto;page-break-after:auto}'
+ +'.rl{position:absolute;left:0;right:0;height:max(1px,calc(.7*var(--u)));background:#D3D8E8}.rv{position:absolute;top:0;bottom:0;width:max(1px,calc(.7*var(--u)));background:#D3D8E8}'
+ +'.nolines .rl,.nolines .rv{display:none}.nohead .ph,.nohead .pf{display:none}'
+ +'.ph{position:absolute;top:calc(5*var(--u));left:calc(20*var(--u));right:calc(20*var(--u));display:flex;justify-content:space-between;align-items:baseline;gap:calc(10*var(--u))}'
+ +'.pt{flex:1;min-width:0;font-weight:800;font-size:calc(12*var(--u));color:#161B33;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}'
+ +'.pn{flex:none;direction:ltr;font-weight:800;font-size:calc(10*var(--u));color:#4B5170}'
+ +'.pf{position:absolute;bottom:calc(6*var(--u));left:0;right:0;text-align:center;font-size:calc(7.5*var(--u));font-weight:700;color:#8A90AB}'
+ +'.pbody{position:relative;height:100%;padding:calc(22*var(--u)) calc(20*var(--u));font-size:calc(var(--fsn)*var(--u));line-height:calc(var(--lhn)*var(--u));overflow:hidden;overflow-wrap:anywhere}'
+ +'.pbody p,.pbody div,.pbody li{margin:0;text-align:start}.pbody h2{margin:0;font-size:calc(var(--fsn)*1.32*var(--u));line-height:calc(var(--lhn)*var(--u));font-weight:800}'
+ +'.pbody ul{margin:0;padding-inline-start:calc(28*var(--u))}.pbody img.pimg{display:block;margin:calc(6*var(--u)) 0;border-radius:calc(6*var(--u))}'
+ +'.pdraw{position:absolute;left:0;top:0;width:100%;height:100%}'
+ +'.cover{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:calc(20*var(--u));color:#fff}'
+ +'.spine{position:absolute;top:0;bottom:0;inset-inline-start:0;width:calc(34*var(--u));background:rgba(0,0,0,.2)}'
+ +'.clabel{width:calc(300*var(--u));margin-inline-start:calc(34*var(--u));background:#fff;color:#161B33;border-radius:calc(18*var(--u));padding:calc(32*var(--u)) calc(18*var(--u));text-align:center;font-weight:800;font-size:calc(30*var(--u));line-height:1.3;overflow-wrap:anywhere;box-shadow:0 calc(6*var(--u)) calc(18*var(--u)) rgba(0,0,0,.18)}'
+ +'.cinfo{margin-inline-start:calc(34*var(--u));font-weight:800;font-size:calc(16*var(--u))}'
+ +'.crl{position:absolute;bottom:calc(60*var(--u));inset-inline-start:calc(70*var(--u));inset-inline-end:calc(36*var(--u));height:calc(40*var(--u));opacity:.4;background:repeating-linear-gradient(transparent 0 calc(12*var(--u)),#fff calc(12*var(--u)) calc(13*var(--u)))}'
+ +'.toc{padding:calc(30*var(--u)) calc(32*var(--u))}.toc h3{font-size:calc(22*var(--u));font-weight:800;margin-bottom:calc(4*var(--u))}.toc .tn{font-size:calc(11*var(--u));color:#6A7090;font-weight:700;margin-bottom:calc(14*var(--u))}'
+ +'.tr{display:flex;gap:calc(12*var(--u));align-items:baseline;padding:calc(4.5*var(--u)) 0;border-bottom:1px solid #E3E6F2;font-size:calc(11.5*var(--u))}'
+ +'.tr b{flex:none;min-width:calc(26*var(--u));color:#fff;background:#161B33;border-radius:calc(6*var(--u));text-align:center;padding:calc(1*var(--u)) calc(4*var(--u));font-size:calc(10*var(--u));direction:ltr}'
+ +'.tr span{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-weight:700}'
+ +'@media print{.top,.hint{display:none}body{background:#fff;padding:0}.pp{margin:0 auto;box-shadow:none}}';
+function printDoc(list,n,o){
+  var l=L(),NLg=NL(n),nl=nbLang(n),d=nbDir(n),fs=fsOf(n),lh=Math.round(fs*1.9),total=n.pages.length,body='';
+  var name=nm(n.name)||NLg.untitled;
+  if(o.cover){
+    var c0=n.color||'#2F6FED';
+    body+='<section class="pp cover" dir="'+d+'" style="background:linear-gradient(150deg,'+shade(c0,.24)+','+shade(c0,-.22)+')"><div class="spine"></div><div class="clabel">'+esc(name)+'</div><div class="cinfo">'+esc(NLg.cvPages(total))+'</div><div class="crl"></div></section>';
+    var per=24;
+    for(var a=0;a<list.length;a+=per){
+      body+='<section class="pp toc" dir="'+d+'"><h3>'+esc(NLg.tocT)+'</h3><div class="tn">'+esc(name)+' · '+esc(NLg.cvPages(total))+'</div>'
+        +list.slice(a,a+per).map(function(p){var t=nm(p.title);return '<div class="tr"><b>'+(n.pages.indexOf(p)+1)+'</b><span>'+esc(t||NLg.tocUn)+'</span></div>';}).join('')+'</section>';
+    }
+  }
+  list.forEach(function(p){
+    var i=n.pages.indexOf(p),has=p.strokes&&p.strokes.length,bg=p.bg||'lined',t=nm(p.title);
+    body+='<section class="pp" dir="'+d+'" style="--fsn:'+fs+';--lhn:'+lh+'">'+printRules(bg,fs,lh)
+      +'<div class="ph"><span class="pt">'+esc(t||name)+'</span><span class="pn">'+(i+1)+' / '+total+'</span></div>'
+      +'<div class="pbody">'+printHtml(p.html)+'</div>'+(has?'<img class="pdraw" alt="" src="'+strokesURL(p)+'">':'')
+      +'<div class="pf">'+esc(name)+'</div></section>';
+  });
+  return '<!DOCTYPE html><html dir="'+(db.lang==='ar'?'rtl':'ltr')+'" lang="'+db.lang+'"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>'+esc(name)+'</title>'
+    +'<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">'
+    +'<style>'+PRINT_CSS+'</style></head><body class="'+(o.lines?'':'nolines ')+(o.head?'':'nohead')+'">'
+    +'<div class="top"><button class="x" onclick="window.close()" aria-label="'+esc(l.pdClose)+'">✕</button><button class="go" onclick="window.print()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><path d="M6 9V2h12v7M6 18H4a2 2 0 01-2-2v-5a2 2 0 012-2h16a2 2 0 012 2v5a2 2 0 01-2 2h-2M6 14h12v8H6z"/></svg>'+esc(l.pdBtn)+'</button></div>'
+    +'<div class="hint">'+esc(l.pdHint)+'</div>'+body+'</body></html>';
+}
 function exportPdf(list,n,o){
   if(window.claude){toast(L().pdfNote);return;}
-  var h='',d=nbDir(n),fs=fsOf(n),lh=Math.round(fs*1.9);
-  list.forEach(function(p){
-    var i=n.pages.indexOf(p),has=p.strokes&&p.strokes.length,bg=p.bg||'lined';
-    var cap=esc(nm(n.name))+(nm(p.title)?' · '+esc(nm(p.title)):'')+' · '+(i+1)+' / '+n.pages.length;
-    h+='<section class="pp"><div class="ppi" dir="'+d+'" style="--fsn:'+fs+';--lhn:'+lh+'">'+printRules(bg,fs,lh)+'<div class="ppt">'+cap+'</div><div class="pbody">'+printHtml(p.html)+'</div>'+(has?'<img class="pdraw" alt="" src="'+strokesURL(p)+'">':'')+'</div></section>';
-  });
-  var pr=$('printRoot'),de=document.documentElement;
-  if(themeWas===null){themeWas=de.getAttribute('data-theme')||'';}
-  de.setAttribute('data-theme','light');
-  pr.className=(o.lines?'':'nolines ')+(o.head?'':'nohead');pr.innerHTML=h;
-  window.print();
+  var w=window.open('','_blank');
+  if(!w){toast(L().pdOpen);return;}
+  w.document.open();w.document.write(printDoc(list,n,o));w.document.close();
 }
-var PV={n:null,sel:{},lines:true,head:true};
-function hidePreview(){var p=$('prv');if(p){p.hidden=true;p.innerHTML='';}PV.n=null;var pr=$('printRoot');if(pr)pr.innerHTML='';if(themeWas!==null){var de=document.documentElement;if(themeWas)de.setAttribute('data-theme',themeWas);else de.removeAttribute('data-theme');themeWas=null;}}
+var PV={n:null,sel:{},lines:true,head:true,cover:false};
+function hidePreview(){var p=$('prv');if(p){p.hidden=true;p.innerHTML='';}PV.n=null;}
 function pvCount(){var c=0;PV.n.pages.forEach(function(p){if(PV.sel[p.id])c++;});return c;}
 function pvUpdate(){
   var l=L(),n=PV.n,c=pvCount(),g=$('pvGrid');if(!g)return;
@@ -1303,13 +1392,13 @@ function pvUpdate(){
 }
 function openPreview(n,which){
   var l=L(),cur=(curNb()===n)?curPg():null;
-  PV.n=n;PV.sel={};PV.lines=true;PV.head=true;
+  PV.n=n;PV.sel={};PV.lines=true;PV.head=true;PV.cover=(which!=='page');
   n.pages.forEach(function(p){PV.sel[p.id]=(which==='page'&&cur)?p===cur:true;});
   var fs=fsOf(n),lh=Math.round(fs*1.9),d=nbDir(n);
   var prv=$('prv');
   prv.innerHTML='<header class="bar"><button class="ib fill" data-p="back" aria-label="close">'+svg('x')+'</button><div class="ttl">'+l.prvT+'</div><button class="pill pri" id="pvGo" data-p="go"></button></header>'
    +'<div class="pvtools"><div class="pvrow"><button class="pill" data-p="all">'+l.prvAll+'</button><button class="pill" data-p="none">'+l.prvNone+'</button></div><div class="pvrow"><input id="pvR" class="inp" type="text" autocomplete="off" autocapitalize="off" placeholder="'+esc(l.prvR)+'"></div>'
-   +'<div class="pvrow"><label class="tg"><input type="checkbox" id="pvL" checked>'+l.prvLines+'</label><label class="tg"><input type="checkbox" id="pvH" checked>'+l.prvHead+'</label></div></div>'
+   +'<div class="pvrow"><label class="tg"><input type="checkbox" id="pvL" checked>'+l.prvLines+'</label><label class="tg"><input type="checkbox" id="pvH" checked>'+l.prvHead+'</label></div><div class="pvrow"><label class="tg"><input type="checkbox" id="pvC"'+(PV.cover?' checked':'')+'>'+l.prvCover+'</label></div></div>'
    +'<div class="scroll"><div class="tgrid pvgrid" id="pvGrid">'+n.pages.map(function(p,i){
       var has=p.strokes&&p.strokes.length;
       return '<div class="th pv" data-pv="'+p.id+'"><div class="thp"><div class="thin paper bg-'+(p.bg||'lined')+'" style="--fs:'+fs+'px;--lh:'+lh+'px"><div class="tbody" dir="'+d+'">'+(p.html||'')+'</div>'+(has?'<img class="tdraw" alt="" src="'+strokesURL(p)+'">':'')+'</div><i class="chk">'+svg('check')+'</i></div><span class="tn">'+(i+1)+'</span></div>';
@@ -1340,13 +1429,14 @@ $('prv').addEventListener('click',function(e){
   else if(a==='go'){
     var list=PV.n.pages.filter(function(p){return PV.sel[p.id];});
     if(!list.length){toast(L().prvNo);return;}
-    exportPdf(list,PV.n,{lines:PV.lines,head:PV.head});
+    exportPdf(list,PV.n,{lines:PV.lines,head:PV.head,cover:PV.cover});
   }
 });
 $('prv').addEventListener('input',function(e){
   if(e.target.id==='pvR')pvRange(e.target.value);
   if(e.target.id==='pvL'){PV.lines=e.target.checked;$('pvGrid').classList.toggle('nolines',!PV.lines);}
   if(e.target.id==='pvH')PV.head=e.target.checked;
+  if(e.target.id==='pvC')PV.cover=e.target.checked;
 });
 document.addEventListener('keydown',function(e){if(e.key==='Escape')hidePreview();});
 
